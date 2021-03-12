@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Github from "./Github.js";
 import { getUsers, createUser, removeUser } from "./Firebase"
+import { GITHUB_ACCESS_TOKEN } from "./constants"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
   const fetchRepos = (githubUsername) => {
     setRepos([])
     setLanguages()
+    setCollaborators([])
     fetch(`https://api.github.com/users/${githubUsername}/repos`)
       .then(response => {
         return response.json()
@@ -43,12 +45,13 @@ function App() {
       method: "GET",
       headers: {
         "Content-type": "application/json;charset=UTF-8",
-        "authorization": "token 57c063f3de3f3d6b1c6d4835444c8e39db391a45"
+        "authorization": `token ${GITHUB_ACCESS_TOKEN}`
       }
     }).then(res => {
       return res.json()
     }).then(json => {
       setCollaborators(json)
+      console.log(collaborators);
     })
   }
 

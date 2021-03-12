@@ -1,8 +1,9 @@
 import firebase from "firebase";
 import "firebase/firestore";
+import { FIREBASE_KEY } from "../constants"
 
 firebase.initializeApp({
-    apiKey: 'AIzaSyBv8OB1uIFqql1SsG7ENgGqlmoLPY3FhZI',
+    apiKey: FIREBASE_KEY,
     authDomain: 'b-e-v-776af.firebaseapp.com',
     projectId: 'b-e-v-776af'
 });
