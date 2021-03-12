@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import Github from "./Github.js";
-import { getUsers, createUser, removeUser } from "./Firebase"
+import { getUsers, createUser, removeUser } from "./config/firebaseconfig"
+import { githubProvider, googleProvider } from './config/AuthMethods';
+
+import socialAuth from './Authentication/Auth'
+
 
 function App() {
 
@@ -39,6 +43,12 @@ function App() {
     console.log(languages);
   }, [languages])
 
+/* Onclick handler */
+  const handleOnClick = async (provider) => {
+    const res = await socialAuth(provider);
+    console.log(res)
+  }
+
   return (
     <>
       <input type="text" value={githubUsername} onChange={e => setGithubUsername(e.target.value)} />
@@ -47,6 +57,14 @@ function App() {
       <input value={username} onChange={e => setUsername(e.target.value)} type="text" />
       <button onClick={() => createUser(username)}>create user</button>
       <button onClick={() => removeUser(username)}>remove user</button>
+
+{/* Social inlog */}
+      <div className="socialAuth"> 
+        <h1>Log in</h1>
+        <button onClick={() => handleOnClick(githubProvider)}>github</button>
+        <button onClick={() => handleOnClick(googleProvider)}>google</button>
+    
+      </div>
     </>
   );
 }

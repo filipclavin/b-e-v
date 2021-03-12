@@ -1,31 +1,26 @@
-import firebase from "firebase";
-import "firebase/firestore";
 
-/* firebase.initializeApp({
-    apiKey: 'AIzaSyBv8OB1uIFqql1SsG7ENgGqlmoLPY3FhZI',
-    authDomain: 'b-e-v-776af.firebaseapp.com',
-    projectId: 'b-e-v-776af'
-}); */
+import "firebase/firestore";
+import firebase from 'firebase'
+
+
 const firebaseConfig = {
     
-    apiKey: "AIzaSyBv8OB1uIFqql1SsG7ENgGqlmoLPY3FhZI",
-      authDomain: "b-e-v-776af.firebaseapp.com",
-      databaseURL: "",
-      projectId: "b-e-v-776af",
-
-      /* storageBucket: "",
-      messagingSenderId: "",
-      appId: "" */
-  
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    export default firebase;
+    apiKey: 'AIzaSyBv8OB1uIFqql1SsG7ENgGqlmoLPY3FhZI',
+    authDomain: 'b-e-v-776af.firebaseapp.com',
+    projectId: 'b-e-v-776af',
+   /*  databaseURL: "",
     
-  
-    
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "" */
 
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  export default firebase;
+
+  
 const db = firebase.firestore();
 
 const users = new Map()
