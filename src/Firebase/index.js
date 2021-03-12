@@ -1,4 +1,4 @@
-import firebase from "firebase";
+/* import firebase from "firebase";
 import "firebase/firestore";
 
 /* firebase.initializeApp({
@@ -6,41 +6,41 @@ import "firebase/firestore";
     authDomain: 'b-e-v-776af.firebaseapp.com',
     projectId: 'b-e-v-776af'
 }); */
-const firebaseConfig = {
+/* const firebaseConfig = {
     
     apiKey: "AIzaSyBv8OB1uIFqql1SsG7ENgGqlmoLPY3FhZI",
       authDomain: "b-e-v-776af.firebaseapp.com",
       databaseURL: "",
-      projectId: "b-e-v-776af",
+      projectId: "b-e-v-776af", */
 
       /* storageBucket: "",
       messagingSenderId: "",
-      appId: "" */
+      appId: "" 
   
-    };
+    };*/
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+   /*  firebase.initializeApp(firebaseConfig);
 
     export default firebase;
-    
+     */
   
     
-
+/* 
 const db = firebase.firestore();
 
 const users = new Map()
 
 export const getUsers = () => {
     db.collection("companies").doc("company1").collection("users").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
+        querySnapshot.forEach((doc) => { */
             // doc.data() is never undefined for query doc snapshots
-            users.set(doc.data().username, doc.id)
+           /*  users.set(doc.data().username, doc.id)
             console.log(doc.data());
         });
     });
 }
-
-export const createUser = (username) => {
+ */
+/* export const createUser = (username) => {
     db.collection("companies").doc("company1").collection("users").doc().set({
         username: username
     })
@@ -63,3 +63,4 @@ export const removeUser = (username) => {
 
     getUsers()
 }
+  */
