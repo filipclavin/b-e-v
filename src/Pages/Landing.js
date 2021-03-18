@@ -1,6 +1,6 @@
-import { githubLogIn } from "./Firebase";
+import { githubLogIn } from "../utils/Firebase";
 
-const LogIn = () => {
+const Landing = () => {
     return (
         <>
             <button onClick={githubLogIn}>Log in with github</button>
@@ -8,4 +8,4 @@ const LogIn = () => {
     )
 }
 
-export default LogIn;
+export default Landing;

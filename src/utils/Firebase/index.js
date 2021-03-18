@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import "firebase/firestore";
-import { FIREBASE_KEY } from "../constants"
+import { FIREBASE_KEY } from "../../constants"
 
 const provider = new firebase.auth.GithubAuthProvider();
 
@@ -65,25 +65,25 @@ export const getUsers = () => {
 };
 
 export const createUser = (username) => {
-    db.collection("companies").doc("company1").collection("users").doc().set({
-        username: username
+  db.collection("companies").doc("company1").collection("users").doc().set({
+    username: username
+  })
+    .then(() => {
+      console.log("Document successfully written!");
     })
-        .then(() => {
-            console.log("Document successfully written!");
-        })
-        .then(() => {
-            getUsers()
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
+    .then(() => {
+      getUsers()
+    }).catch((error) => {
+      console.log("Error getting document:", error);
+    });
 }
 
 export const removeUser = (username) => {
-    db.collection("companies").doc("company1").collection("users").doc(users.get(username)).delete().then(() => {
-        console.log("Document successfully deleted!");
-    }).catch((error) => {
-        console.error("Error removing document: ", error);
-    });
+  db.collection("companies").doc("company1").collection("users").doc(users.get(username)).delete().then(() => {
+    console.log("Document successfully deleted!");
+  }).catch((error) => {
+    console.error("Error removing document: ", error);
+  });
 
-    getUsers()
+  getUsers()
 }

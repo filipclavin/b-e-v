@@ -1,19 +1,19 @@
-import InfoBox from "./components/InfoBox.js";
-import QuotaBar from "./components/QuotaBar.js";
-import Header from "./components/Header.js";
-import Card from "./components/Card.js";
-import TrelloColumn from "./components/TrelloColumn.js";
-import Github from "./Github.js";
+import InfoBox from "../components/InfoBox.js";
+import QuotaBar from "../components/QuotaBar.js";
+import Header from "../components/Header.js";
+import Card from "../components/Card.js";
+import TrelloColumn from "../components/TrelloColumn.js";
+import Github from "../utils/Github";
 
-import {useEffect, useState} from 'react';
-import {getUsers, createUser, removeUser} from "./Firebase"
-import {GITHUB_ACCESS_TOKEN} from "./constants"
+import { useEffect, useState } from 'react';
+import { getUsers, createUser, removeUser } from "../utils/Firebase"
+import { GITHUB_ACCESS_TOKEN } from "../constants"
 
 
-import {Bar, Pie, Line} from 'react-chartjs-2'
+import { Bar, Pie, Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 
-import { githubLogOut } from "./Firebase";
+import { githubLogOut } from "../utils/Firebase";
 
 
 const Grid = styled.div`
@@ -33,83 +33,83 @@ const Grid = styled.div`
     "sprint-time sprint-time sprint-time weekly-quota";
 `;
 
-const Dashboard = ({props}) => {
-    
-    const [repos, setRepos] = useState([])
-    const [githubUsername, setGithubUsername] = useState('')
-    const [languages, setLanguages] = useState()
-    const [collaborators, setCollaborators] = useState([])
+const Dashboard = ({ props }) => {
 
-    const data = {
-        labels: languages ? Object.keys(languages) : [],
-        datasets: [{
-          label: '# of Votes',
-          data: languages ? Object.values(languages): [],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      }
+  const [repos, setRepos] = useState([])
+  const [githubUsername, setGithubUsername] = useState('')
+  const [languages, setLanguages] = useState()
+  const [collaborators, setCollaborators] = useState([])
 
-    const [username, setUsername] = useState('')
-    useEffect(() => {
-        getUsers()
-    }, [])
+  const data = {
+    labels: languages ? Object.keys(languages) : [],
+    datasets: [{
+      label: '# of Votes',
+      data: languages ? Object.values(languages) : [],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  }
 
-    const fetchRepos = (githubUsername) => {
-        setRepos([])
-        setLanguages()
-        setCollaborators([])
-        fetch(`https://api.github.com/users/${githubUsername}/repos`)
-            .then(response => {
-                return response.json()
-            })
-            .then(json => {
-                json.map(repo => {
-                    setRepos(repos => [...repos, repo])
-                })
-            })
-    }
+  const [username, setUsername] = useState('')
+  useEffect(() => {
+    getUsers()
+  }, [])
 
-    const getLanguages = (githubUsername, repo) => {
-        fetch(`https://api.github.com/repos/${githubUsername}/${repo}/languages`)
-            .then(res => {
-                return res.json()
-            })
-            .then(json => {
-                setLanguages(json)
-            })
-    }
-
-    const getCollaborators = (githubUsername, repo) => {
-        fetch(`https://api.github.com/repos/${githubUsername}/${repo}/collaborators`, {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json;charset=UTF-8",
-                "authorization": `token ${GITHUB_ACCESS_TOKEN}`
-            }
-        }).then(res => {
-            return res.json()
-        }).then(json => {
-            setCollaborators(json)
-            console.log(collaborators);
+  const fetchRepos = (githubUsername) => {
+    setRepos([])
+    setLanguages()
+    setCollaborators([])
+    fetch(`https://api.github.com/users/${githubUsername}/repos`)
+      .then(response => {
+        return response.json()
+      })
+      .then(json => {
+        json.map(repo => {
+          setRepos(repos => [...repos, repo])
         })
-    };
-    
+      })
+  }
+
+  const getLanguages = (githubUsername, repo) => {
+    fetch(`https://api.github.com/repos/${githubUsername}/${repo}/languages`)
+      .then(res => {
+        return res.json()
+      })
+      .then(json => {
+        setLanguages(json)
+      })
+  }
+
+  const getCollaborators = (githubUsername, repo) => {
+    fetch(`https://api.github.com/repos/${githubUsername}/${repo}/collaborators`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        "authorization": `token ${GITHUB_ACCESS_TOKEN}`
+      }
+    }).then(res => {
+      return res.json()
+    }).then(json => {
+      setCollaborators(json)
+      console.log(collaborators);
+    })
+  };
+
   return (
     <Grid className="App">
       <Header gridArea="header" members={["beppe", "jeppe", "beppson"]}>
@@ -191,18 +191,6 @@ const Dashboard = ({props}) => {
 
       <TrelloColumn gridArea="completed-tasks"></TrelloColumn>
 
-      {/*<ul>*/}
-      {/*    {*/}
-      {/*        repos.map(item => {*/}
-      {/*            return (*/}
-      {/*                <li><a href="http://www.google.com">{item.name}</a></li>*/}
-      {/*            )*/}
-      {/*        })*/}
-      {/*    }*/}
-      {/*</ul>*/}
-      {/*{*/}
-      {/*    Object.entries(repos)*/}
-      {/*}*/}
       <input
         type="text"
         value={githubUsername}
