@@ -4,6 +4,7 @@ import Header from "../components/Header.js";
 import Card from "../components/Card.js";
 import TrelloColumn from "../components/TrelloColumn.js";
 import Github from "../utils/Github";
+import Activity from "../components/Activity.js"
 
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser } from "../utils/Firebase"
@@ -157,26 +158,7 @@ const Dashboard = ({ props }) => {
       </InfoBox>
 
       <InfoBox gridArea="activity">
-        <Line
-          data={{
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-            datasets: [
-              {
-                label: "First dataset",
-                data: [33, 53, 85, 41, 44, 65],
-                fill: true,
-                backgroundColor: "rgba(75,192,192,0.2)",
-                borderColor: "rgba(75,192,192,1)",
-              },
-              {
-                label: "Second dataset",
-                data: [33, 25, 35, 51, 54, 76],
-                fill: false,
-                borderColor: "#742774",
-              },
-            ],
-          }}
-        />
+        <Activity />
       </InfoBox>
 
       <InfoBox gridArea="sprint-time"></InfoBox>
