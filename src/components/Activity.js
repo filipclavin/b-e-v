@@ -96,6 +96,24 @@ const Activity = () => {
                             fill: false,
                             borderColor: "#742774",
                         },
+                        {
+                            label: "Kevin",
+                            data: [15, 22, 45, 32, 75, 21],
+                            fill: false,
+                            borderColor: "rgba(255, 159, 64, 1)",
+                        },
+                        {
+                            label: "Rebecca",
+                            data: [75, 55, 66, 31, 10, 56],
+                            fill: false,
+                            borderColor: "rgba(54, 162, 235, 1)",
+                        },
+                        {
+                            label: "Rubadub",
+                            data: [1, 11, 21, 31, 41, 51],
+                            fill: false,
+                            borderColor: "rgba(255, 206, 86,1)",
+                        },
                     ],
                 }}
             />
