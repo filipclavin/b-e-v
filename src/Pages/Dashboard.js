@@ -8,7 +8,6 @@ import Activity from "../components/Activity.js"
 
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser } from "../utils/Firebase"
-import { GITHUB_ACCESS_TOKEN } from "../constants"
 
 
 import { Bar, Pie, Line } from 'react-chartjs-2'
@@ -39,7 +38,6 @@ const Dashboard = ({ props }) => {
   const [repos, setRepos] = useState([])
   const [githubUsername, setGithubUsername] = useState('')
   const [languages, setLanguages] = useState()
-  const [collaborators, setCollaborators] = useState([])
 
   const data = {
     labels: languages ? Object.keys(languages) : [],
@@ -74,7 +72,6 @@ const Dashboard = ({ props }) => {
   const fetchRepos = (githubUsername) => {
     setRepos([])
     setLanguages()
-    setCollaborators([])
     fetch(`https://api.github.com/users/${githubUsername}/repos`)
       .then(response => {
         return response.json()
@@ -95,21 +92,6 @@ const Dashboard = ({ props }) => {
         setLanguages(json)
       })
   }
-
-  const getCollaborators = (githubUsername, repo) => {
-    fetch(`https://api.github.com/repos/${githubUsername}/${repo}/collaborators`, {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json;charset=UTF-8",
-        "authorization": `token ${GITHUB_ACCESS_TOKEN}`
-      }
-    }).then(res => {
-      return res.json()
-    }).then(json => {
-      setCollaborators(json)
-      console.log(collaborators);
-    })
-  };
 
   return (
     <Grid className="App">
@@ -182,10 +164,8 @@ const Dashboard = ({ props }) => {
       <Github
         repos={repos}
         getLanguages={getLanguages}
-        getCollaborators={getCollaborators}
         githubUsername={githubUsername}
         languages={languages}
-        collaborators={collaborators}
       />
       <input
         value={username}

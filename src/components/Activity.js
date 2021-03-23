@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { Line } from 'react-chartjs-2'
+import randomcolor from "randomcolor"
+
+import { GITHUB_ACCESS_TOKEN } from "../constants.js"
 
 const Activity = () => {
 
@@ -67,11 +70,60 @@ const Activity = () => {
         return months
     }
 
-
-
     const [times, setTimes] = useState(last7Days())
 
+    const [collaborators, setCollaborators] = useState([])
 
+    const [repoURL, setRepoURL] = useState('')
+
+    const getCollaborators = (githubUsername, repo) => {
+        setRepoURL(`https://api.github.com/repos/${githubUsername}/${repo}`)
+
+        fetch(`${repoURL}/collaborators`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "authorization": `token ${GITHUB_ACCESS_TOKEN}`
+            }
+        }).then(res => {
+            return res.json()
+        }).then(json => {
+            setCollaborators(json)
+            return collaborators
+        })
+    };
+
+    const setData = () => {
+        let result = []
+
+        collaborators.map(coll => {
+
+            let commitData = []
+
+            fetch(`${repoURL}/commits`)
+                .then(res => {
+                    return res.json()
+                }).then(json => {
+                    if (times === last7Days()) {
+
+                    } else if (times === last4Weeks()) {
+
+                    } else {
+
+                    }
+                })
+
+
+            result.push({
+                label: coll.login,
+                data: commitData,
+                fill: false,
+                borderColor: randomcolor
+            })
+        })
+
+        return result
+    }
 
     return (
         <>
@@ -83,38 +135,7 @@ const Activity = () => {
             <Line
                 data={{
                     labels: times,
-                    datasets: [
-                        {
-                            label: "Filip",
-                            data: [33, 53, 85, 41, 44, 65],
-                            fill: false,
-                            borderColor: "rgba(75,192,192,1)",
-                        },
-                        {
-                            label: "Jesper",
-                            data: [33, 25, 35, 51, 54, 76],
-                            fill: false,
-                            borderColor: "#742774",
-                        },
-                        {
-                            label: "Kevin",
-                            data: [15, 22, 45, 32, 75, 21],
-                            fill: false,
-                            borderColor: "rgba(255, 159, 64, 1)",
-                        },
-                        {
-                            label: "Rebecca",
-                            data: [75, 55, 66, 31, 10, 56],
-                            fill: false,
-                            borderColor: "rgba(54, 162, 235, 1)",
-                        },
-                        {
-                            label: "Rubadub",
-                            data: [1, 11, 21, 31, 41, 51],
-                            fill: false,
-                            borderColor: "rgba(255, 206, 86,1)",
-                        },
-                    ],
+                    datasets: setData()
                 }}
             />
         </>
