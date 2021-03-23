@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
-import randomcolor from "randomcolor"
+import randomcolor from 'randomcolor'
+import moment from 'moment'
 
 import { GITHUB_ACCESS_TOKEN } from "../constants.js"
 
@@ -71,13 +72,21 @@ const Activity = () => {
     }
 
     const [times, setTimes] = useState(last7Days())
+    useEffect(() => {
+        setData()
+    }, [times])
 
     const [collaborators, setCollaborators] = useState([])
 
     const [repoURL, setRepoURL] = useState('')
 
-    const getCollaborators = (githubUsername, repo) => {
-        setRepoURL(`https://api.github.com/repos/${githubUsername}/${repo}`)
+    const [commitCount, setCommitCount] = useState([])
+    const [datasets, setDatasets] = useState([])
+
+    const setData = () => {
+        //getCollabs start
+
+        setRepoURL(`https://api.github.com/repos/filipclavin/b-e-v`)
 
         fetch(`${repoURL}/collaborators`, {
             method: "GET",
@@ -89,40 +98,84 @@ const Activity = () => {
             return res.json()
         }).then(json => {
             setCollaborators(json)
-            return collaborators
         })
-    };
 
-    const setData = () => {
+        //getCollabs slut
+
         let result = []
+
+        const dates = new Map();
 
         collaborators.map(coll => {
 
-            let commitData = []
+            const simpleCommits = []
+
+            const week = [0, 0, 0, 0, 0, 0, 0]
 
             fetch(`${repoURL}/commits`)
                 .then(res => {
                     return res.json()
                 }).then(json => {
-                    if (times === last7Days()) {
 
-                    } else if (times === last4Weeks()) {
 
-                    } else {
 
-                    }
+
+                    json.forEach(obj => {
+                        simpleCommits.push({ name: obj.commit.author.name, date: obj.commit.author.date })
+                    })
+
+                    //array of commits that's one week or less old
+                    const weekOldCommits = [...getWeekOldCommits(simpleCommits)]
+
+                    weekOldCommits.forEach(commit => {
+                        if (commit) {
+
+                            console.log(commit)
+                            const date = new Date(commit.date);
+                            const year = date.getFullYear();
+                            const month = date.getMonth();
+                            const dt = date.getDate();
+
+
+
+                            var a = moment([year, month, dt])
+
+
+                            let today = moment(new Date())
+                            //console.log(today.diff(a, 'days') - 1)
+                            week[today.diff(commit.date, 'days') - 1] += 1;
+                        }
+                    })
+
+
+
+
+                    setCommitCount(week.reverse())
+                    /* console.log(week.reverse()) */
                 })
 
 
             result.push({
                 label: coll.login,
-                data: commitData,
+                data: commitCount,
                 fill: false,
                 borderColor: randomcolor
             })
         })
 
-        return result
+        setDatasets(result)
+    }
+
+    const getWeekOldCommits = (obj) => {
+        return obj.map(commit => {
+            if (moment(new Date).diff(commit.date, 'days') <= 7) {
+                return obj
+            }
+        })
+    }
+
+    const getMonth = (date) => {
+
     }
 
     return (
@@ -135,7 +188,7 @@ const Activity = () => {
             <Line
                 data={{
                     labels: times,
-                    datasets: setData()
+                    datasets: datasets
                 }}
             />
         </>

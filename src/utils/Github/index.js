@@ -23,19 +23,6 @@ const Github = (props) => {
             {
                 props.languages ? Object.entries(props.languages).map((t, k) => <p key={k}>{t}</p>) : null
             }
-
-            <ul>
-                {
-                    props.collaborators.map(collaborator => {
-                        return (
-                            <li>{collaborator.login}</li>
-                        )
-                    })
-
-
-
-                }
-            </ul>
         </>
     )
 }
