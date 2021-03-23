@@ -6,6 +6,8 @@ import TrelloColumn from "../components/TrelloColumn.js";
 import Github from "../utils/Github";
 import Activity from "../components/Activity.js"
 
+import Trello from '.././components/Trello'
+
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser } from "../utils/Firebase"
 import { GITHUB_ACCESS_TOKEN } from "../constants"
@@ -166,10 +168,13 @@ const Dashboard = ({ props }) => {
       <TrelloColumn gridArea="ideas">
         <Card>
           <p>Hello!</p>
+          
         </Card>
       </TrelloColumn>
 
-      <TrelloColumn gridArea="uncompleted-tasks"></TrelloColumn>
+      <TrelloColumn gridArea="uncompleted-tasks">
+      <Trello data={data}/>
+      </TrelloColumn>
 
       <TrelloColumn gridArea="completed-tasks"></TrelloColumn>
 
