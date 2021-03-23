@@ -5,6 +5,9 @@ import Card from "../components/Card.js";
 import TrelloColumn from "../components/TrelloColumn.js";
 import Github from "../utils/Github";
 import Activity from "../components/Activity.js"
+import WeeklyQuota from '../components/WeeklyQuota'
+
+import Trello from '.././components/Trello'
 
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser } from "../utils/Firebase"
@@ -148,12 +151,17 @@ const Dashboard = ({ props }) => {
       <TrelloColumn gridArea="ideas">
         <Card>
           <p>Hello!</p>
+          
         </Card>
       </TrelloColumn>
 
-      <TrelloColumn gridArea="uncompleted-tasks"></TrelloColumn>
+      <TrelloColumn gridArea="uncompleted-tasks">
+      <Trello data={data}/>
+      </TrelloColumn>
 
-      <TrelloColumn gridArea="completed-tasks"></TrelloColumn>
+      <TrelloColumn gridArea="completed-tasks">
+      <WeeklyQuota />
+      </TrelloColumn>
 
       <input
         type="text"
