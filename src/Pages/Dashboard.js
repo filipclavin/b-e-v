@@ -5,6 +5,7 @@ import Card from "../components/Card.js";
 import TrelloColumn from "../components/TrelloColumn.js";
 import Github from "../utils/Github";
 import Activity from "../components/Activity.js"
+import WeeklyQuota from '../components/WeeklyQuota'
 
 import Trello from '.././components/Trello'
 
@@ -176,7 +177,9 @@ const Dashboard = ({ props }) => {
       <Trello data={data}/>
       </TrelloColumn>
 
-      <TrelloColumn gridArea="completed-tasks"></TrelloColumn>
+      <TrelloColumn gridArea="completed-tasks">
+      <WeeklyQuota />
+      </TrelloColumn>
 
       <input
         type="text"
