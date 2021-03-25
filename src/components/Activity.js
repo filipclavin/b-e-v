@@ -104,8 +104,6 @@ const Activity = () => {
 
         let result = []
 
-        const dates = new Map();
-
         collaborators.map(coll => {
 
             const simpleCommits = []
@@ -129,8 +127,8 @@ const Activity = () => {
 
                     weekOldCommits.forEach(commit => {
                         if (commit) {
-
-                            console.log(commit)
+                            let today = moment(new Date())
+                            /* console.log(commit)
                             const date = new Date(commit.date);
                             const year = date.getFullYear();
                             const month = date.getMonth();
@@ -138,10 +136,10 @@ const Activity = () => {
 
 
 
-                            var a = moment([year, month, dt])
+                            var a = moment([year, month, dt]) */
 
 
-                            let today = moment(new Date())
+
                             //console.log(today.diff(a, 'days') - 1)
                             week[today.diff(commit.date, 'days') - 1] += 1;
                         }
@@ -151,7 +149,6 @@ const Activity = () => {
 
 
                     setCommitCount(week.reverse())
-                    /* console.log(week.reverse()) */
                 })
 
 
@@ -161,21 +158,21 @@ const Activity = () => {
                 fill: false,
                 borderColor: randomcolor
             })
+            setDatasets(result)
         })
 
-        setDatasets(result)
     }
+
+    useEffect(() => {
+        console.log("datasets: " + datasets)
+    }, [datasets])
 
     const getWeekOldCommits = (obj) => {
         return obj.map(commit => {
             if (moment(new Date).diff(commit.date, 'days') <= 7) {
-                return obj
+                return commit
             }
         })
-    }
-
-    const getMonth = (date) => {
-
     }
 
     return (
