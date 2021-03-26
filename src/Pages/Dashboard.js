@@ -3,20 +3,16 @@ import QuotaBar from "../components/QuotaBar.js";
 import Header from "../components/Header.js";
 import Card from "../components/Card.js";
 import TrelloColumn from "../components/TrelloColumn.js";
-import Github from "../utils/Github";
 import Activity from "../components/Activity.js"
 import WeeklyQuota from '../components/WeeklyQuota'
 
-import Trello from '.././components/Trello'
-
 import { useEffect, useState } from 'react';
-import { getUsers, createUser, removeUser } from "../utils/Firebase"
+import { getUsers, createUser, removeUser, githubLogOut } from "../utils/firebase.js"
+import { getLanguageData } from "../utils/github"
 
 
 import { Bar, Pie, Line } from 'react-chartjs-2'
 import styled from 'styled-components'
-
-import { githubLogOut } from "../utils/Firebase";
 
 
 const Grid = styled.div`
@@ -38,8 +34,6 @@ const Grid = styled.div`
 
 const Dashboard = ({ props }) => {
 
-  const [repos, setRepos] = useState([])
-  const [githubUsername, setGithubUsername] = useState('')
   const [languages, setLanguages] = useState()
 
   const data = {
@@ -72,30 +66,6 @@ const Dashboard = ({ props }) => {
     getUsers()
   }, [])
 
-  const fetchRepos = (githubUsername) => {
-    setRepos([])
-    setLanguages()
-    fetch(`https://api.github.com/users/${githubUsername}/repos`)
-      .then(response => {
-        return response.json()
-      })
-      .then(json => {
-        json.map(repo => {
-          setRepos(repos => [...repos, repo])
-        })
-      })
-  }
-
-  const getLanguages = (githubUsername, repo) => {
-    fetch(`https://api.github.com/repos/${githubUsername}/${repo}/languages`)
-      .then(res => {
-        return res.json()
-      })
-      .then(json => {
-        setLanguages(json)
-      })
-  }
-
   return (
     <Grid className="App">
       <Header gridArea="header" members={["beppe", "jeppe", "beppson"]}>
@@ -104,7 +74,7 @@ const Dashboard = ({ props }) => {
       </Header>
 
       <InfoBox gridArea="languages">
-        <Pie data={data} />
+        <Pie data={getLanguageData()} />
       </InfoBox>
 
       <InfoBox gridArea="weekly-quota">
@@ -151,30 +121,17 @@ const Dashboard = ({ props }) => {
       <TrelloColumn gridArea="ideas">
         <Card>
           <p>Hello!</p>
-          
+
         </Card>
       </TrelloColumn>
 
       <TrelloColumn gridArea="uncompleted-tasks">
-      <Trello data={data}/>
       </TrelloColumn>
 
       <TrelloColumn gridArea="completed-tasks">
-      <WeeklyQuota />
+        <WeeklyQuota />
       </TrelloColumn>
 
-      <input
-        type="text"
-        value={githubUsername}
-        onChange={(e) => setGithubUsername(e.target.value)}
-      />
-      <button onClick={() => fetchRepos(githubUsername)}>fetch repos</button>
-      <Github
-        repos={repos}
-        getLanguages={getLanguages}
-        githubUsername={githubUsername}
-        languages={languages}
-      />
       <input
         value={username}
         onChange={(e) => setUsername(e.target.value)}

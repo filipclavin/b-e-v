@@ -1,4 +1,4 @@
-import { githubLogIn } from "../utils/Firebase";
+import { githubLogIn } from "../utils/firebase.js";
 import styled from 'styled-components'
 import LandingVideo from '../video/Charts.webm';
 import TypeWriter from '../components/TypeWriter/TypeWriter'
@@ -71,37 +71,37 @@ const Container = styled.div`
 const Landing = () => {
     return (
         <>
-        <StyledMain>
-            <LandingHeader>
-                <Logo>
-                    B-E-V
+            <StyledMain>
+                <LandingHeader>
+                    <Logo>
+                        B-E-V
                 </Logo>
-            <button onClick={githubLogIn}>Log in with github</button>
-            </LandingHeader>
+                    <button onClick={githubLogIn}>Log in with github</button>
+                </LandingHeader>
 
-            <video autoPlay loop muted
-            style={{
-                position: "absolute",
-                bottom: "0",
-                width: "100%",
-                height: "100%",
-                zIndex: "1",
-                objectFit: "cover",
-                
-            }}
-            >
-                <source src={LandingVideo} type="video/webm"/>
-            </video>
-            <Container>
-            <section>
-                <Par>
-                <TypeWriter />
-               {/*
+                <video autoPlay loop muted
+                    style={{
+                        position: "absolute",
+                        bottom: "0",
+                        width: "100%",
+                        height: "100%",
+                        zIndex: "1",
+                        objectFit: "cover",
+
+                    }}
+                >
+                    <source src={LandingVideo} type="video/webm" />
+                </video>
+                <Container>
+                    <section>
+                        <Par>
+                            <TypeWriter />
+                            {/*
                 Full digital overview is the best means to combat these modern issues and optimize your company for the future. */}
-                </Par>
-            </section>
-            </Container>
-        </StyledMain>
+                        </Par>
+                    </section>
+                </Container>
+            </StyledMain>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import "firebase/firestore";
-import { FIREBASE_KEY } from "../../constants"
+import { FIREBASE_KEY } from "../constants"
 
 const provider = new firebase.auth.GithubAuthProvider();
 
@@ -10,11 +10,12 @@ export const githubLogIn = () => {
     .signInWithPopup(provider)
 
     .then(function (result) {
-      const token = result.credential.accessToken;
-      const user = result.user;
+      /* const token = result.credential.accessToken;
+      const user = result.user; */
 
-      console.log(token);
-      console.log(user);
+      console.log(result);
+      /* console.log(token);
+      console.log(user); */
     })
     .catch(function (error) {
       const errorCode = error.code;
