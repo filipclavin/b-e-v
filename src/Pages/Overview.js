@@ -3,10 +3,11 @@ import { Router, Switch } from "react-router"
 import { getRepos } from "../utils/github"
 import { getLanguageData } from "../utils/github"
 import Dashboard from "./Dashboard"
+import { githubLogOut } from "../utils/firebase"
 
 const Overview = () => {
 
-    const [repos, setRepos] = useState(getRepos('filipclavin')
+    /* const [repos, setRepos] = useState(getRepos('filipclavin')
         .then(response => {
             return response
         }));
@@ -26,6 +27,10 @@ const Overview = () => {
                 )
             })
 
+    ) */
+
+    return (
+        <button onClick={githubLogOut}>Log out</button>
     )
 
 
