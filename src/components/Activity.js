@@ -81,7 +81,7 @@ const Activity = () => {
     const [repoURL, setRepoURL] = useState('')
 
     const [commitCount, setCommitCount] = useState([])
-    const [datasets, setDatasets] = useState([])
+    const [datasets, setDatasets] = useState()
 
     const setData = () => {
         //getCollabs start
@@ -104,7 +104,7 @@ const Activity = () => {
 
         let result = []
 
-        collaborators.map(coll => {
+        collaborators.forEach(coll => {
 
             const simpleCommits = []
 
@@ -114,10 +114,6 @@ const Activity = () => {
                 .then(res => {
                     return res.json()
                 }).then(json => {
-
-
-
-
                     json.forEach(obj => {
                         simpleCommits.push({ name: obj.commit.author.name, date: obj.commit.author.date })
                     })
@@ -145,22 +141,23 @@ const Activity = () => {
                         }
                     })
 
-
+                    result.push({
+                        label: coll.login,
+                        data: week.reverse(),
+                        fill: false,
+                        borderColor: randomcolor
+                    })
 
 
                     setCommitCount(week.reverse())
                 })
 
 
-            result.push({
-                label: coll.login,
-                data: commitCount,
-                fill: false,
-                borderColor: randomcolor
-            })
-            setDatasets(result)
-        })
 
+
+        })
+        setDatasets(result)
+        //console.log("datasets: " + datasets)
     }
 
     useEffect(() => {

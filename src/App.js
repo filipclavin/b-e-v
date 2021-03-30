@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import Landing from "./Pages/Landing.js"
 import Overview from "./Pages/Overview.js"
+import Dashboard from "./Pages/Dashboard.js"
 
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -28,7 +29,7 @@ function App() {
     return (
         <>
             {loggedIn
-                ? <Overview />
+                ? <Dashboard />
                 : <Landing />
             }
         </>

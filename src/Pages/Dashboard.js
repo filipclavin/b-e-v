@@ -8,7 +8,7 @@ import WeeklyQuota from '../components/WeeklyQuota'
 
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser, githubLogOut } from "../utils/firebase.js"
-import { getLanguageData } from "../utils/github"
+import { getLanguageData } from "../utils/github.js"
 
 
 import { Bar, Pie, Line } from 'react-chartjs-2'
@@ -32,9 +32,7 @@ const Grid = styled.div`
     "sprint-time sprint-time sprint-time weekly-quota";
 `;
 
-const Dashboard = ({ props }) => {
-
-  const [languages, setLanguages] = useState()
+const Dashboard = ({ languages }) => {
 
   const data = {
     labels: languages ? Object.keys(languages) : [],

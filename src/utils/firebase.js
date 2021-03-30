@@ -13,7 +13,7 @@ export const githubLogIn = () => {
       /* const token = result.credential.accessToken;
       const user = result.user; */
 
-      console.log(result);
+      console.log(result.additionalUserInfo.username);
       /* console.log(token);
       console.log(user); */
     })
