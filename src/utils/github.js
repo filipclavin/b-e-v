@@ -1,3 +1,5 @@
+import {useEffect} from "react";
+
 export const getRepos = async (username) => {
     const repos = []
 
@@ -46,4 +48,20 @@ export const getLanguageData = async (username, repo) => {
             }
             return data
         })
+}
+
+export const getRepoCommits = async (username, repo) => {
+
+    const simpleCommitData = [];
+
+    await fetch(`https://api.github.com/repos/${username}/${repo}/commits`)
+        .then(res => {
+            return res.json()
+        }).then(json => {
+            json.map(commit => {
+                simpleCommitData.push({name: commit.commit.committer.name, date: commit.commit.committer.date})
+            })
+        })
+
+    return simpleCommitData;
 }
