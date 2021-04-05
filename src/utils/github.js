@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { GITHUB_ACCESS_TOKEN } from "../constants"
 
 export const getRepos = async (username) => {
     const repos = []
@@ -50,18 +50,41 @@ export const getLanguageData = async (username, repo) => {
         })
 }
 
-export const getRepoCommits = async (username, repo) => {
+export const getRepoCommits = async (repoURL) => {
 
     const simpleCommitData = [];
 
-    await fetch(`https://api.github.com/repos/${username}/${repo}/commits`)
+    await fetch(`${repoURL}/commits`)
         .then(res => {
             return res.json()
         }).then(json => {
             json.map(commit => {
-                simpleCommitData.push({name: commit.commit.committer.name, date: commit.commit.committer.date})
+                simpleCommitData.push({ name: commit.commit.committer.name, date: commit.commit.committer.date })
             })
         })
 
     return simpleCommitData;
+}
+
+export const getRepoCollaborators = async (repoURL) => {
+
+    const simpleCollaborators = []
+
+    await fetch(`${repoURL}/collaborators`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${GITHUB_ACCESS_TOKEN}`
+        }
+    })
+        .then(res => {
+            return res.json()
+        })
+        .then(json => {
+            json.forEach(coll => {
+                simpleCollaborators.push(coll.login)
+            })
+        })
+
+    return simpleCollaborators
+
 }

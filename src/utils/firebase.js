@@ -60,7 +60,7 @@ export const getUsers = () => {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         users.set(doc.data().username, doc.id);
-        console.log(doc.data());
+        /* console.log(doc.data()); */
       });
     });
 };
