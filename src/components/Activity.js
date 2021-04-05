@@ -54,8 +54,6 @@ const Activity = () => {
                 }
 
                 if (diffDays <= 182 && selectedSpan === 3) {
-                    console.log(coll)
-                    console.log("commit name: " + commit.name)
                     if (commit.name === coll) months[diffMonths]++
                 }
             })
