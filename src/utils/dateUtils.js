@@ -26,12 +26,12 @@ Date.prototype.getWeek = function () {
         - 3 + (week1.getDay() + 6) % 7) / 7)
 }
 
- export const last7Days = () => {
+export const last7Days = () => {
 
     let result = []
     for (let i = 7; i > 0; i--) {
         let d = new Date()
-        d.setDate(d.getDate() - i)
+        d.setDate(d.getDate())
         result.push(formatDate(d))
     }
 
@@ -41,7 +41,7 @@ Date.prototype.getWeek = function () {
 export const last4Weeks = () => {
     let currWeek = (new Date()).getWeek()
 
-    return [`Week ${currWeek - 4}`, `Week ${currWeek - 3}`, `Week ${currWeek - 2}`, `Week ${currWeek - 1}`]
+    return [`Week ${currWeek - 3}`, `Week ${currWeek - 2}`, `Week ${currWeek - 1}`, `Week ${currWeek}`]
 }
 
 export const last6Months = () => {
@@ -53,7 +53,7 @@ export const last6Months = () => {
     let months = [];
 
     for (let i = 6; i > 0; i--) {
-        d = new Date(today.getFullYear(), today.getMonth() - i, 1)
+        d = new Date(today.getFullYear(), today.getMonth(), 1)
         month = monthNames[d.getMonth()]
         months.push(month)
     }

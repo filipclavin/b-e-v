@@ -10,6 +10,7 @@ const Activity = () => {
     const [repoURL, setRepoURL] = useState('https://api.github.com/repos/filipclavin/b-e-v')
     const [datasets, setDatasets] = useState()
     const [times, setTimes] = useState(last7Days())
+    const [selectedSpan, setSelectedSpan] = useState(1)
 
     useEffect(async () => {
         setData()
@@ -30,6 +31,8 @@ const Activity = () => {
         collaborators.forEach(coll => {
 
             const week = [0, 0, 0, 0, 0, 0, 0]
+            const weeks = [0, 0, 0, 0]
+            const months = [0, 0, 0, 0, 0, 0]
 
             commits.forEach(commit => {
                 const commitDate = new Date(commit.date)
@@ -37,13 +40,35 @@ const Activity = () => {
 
                 const diffTime = Math.abs(today - commitDate)
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) - 1;
+                const diffWeeks = Math.ceil(diffDays / 7);
+                const diffMonths = Math.ceil(diffDays / 30)
 
 
-                if (diffDays <= 7) {
+                if (diffDays <= 7 && selectedSpan === 1) {
+                    console.log('commit at ' + commitDate);
+
                     if (commit.name === coll) {
-                        week[diffDays - 1]++
+                        week[diffDays]++
                     }
                 }
+
+                if (diffDays <= 28 && selectedSpan === 2) {
+                    console.log('commit at ' + commitDate);
+
+                    if (commit.name === coll) {
+                        weeks[diffWeeks]++
+                    }
+                }
+
+                if (diffDays <= 182 && selectedSpan === 3) {
+                    console.log('commit at ' + commitDate);
+
+                    if (commit.name === coll) {
+                        months[diffMonths]++
+                    }
+                }
+
+
             })
 
             result.push({
@@ -61,75 +86,24 @@ const Activity = () => {
 
     }
 
-    // collaborators.forEach(coll => {
-    //
-    //     const simpleCommits = []
-    //
-    //     const week = [0, 0, 0, 0, 0, 0, 0]
-    //     const weekPerPerson = new Map()
-    //
-    //     collaborators.forEach(collaborator => {
-    //         weekPerPerson.set(collaborator, [0, 0, 0, 0, 0, 0, 0])
-    //     })
-    //
-    //     fetch(`${repoURL}/commits`)
-    //         .then(res => {
-    //             return res.json()
-    //         }).then(json => {
-    //         json.forEach(obj => {
-    //             simpleCommits.push({name: obj.commit.author.name, date: obj.commit.author.date})
-    //         })
-    //
-    //         //array of commits that's one week or less old
-    //         const weekOldCommits = [...getWeekOldCommits(simpleCommits)]
-    //
-    //         weekOldCommits.forEach(commit => {
-    //             if (commit) {
-    //                 let today = moment(new Date())
-    //                 /* console.log(commit)
-    //                 const date = new Date(commit.date);
-    //                 const year = date.getFullYear();
-    //                 const month = date.getMonth();
-    //                 const dt = date.getDate();
-    //
-    //
-    //
-    //                 var a = moment([year, month, dt]) */
-    //
-    //
-    //                 //console.log(today.diff(a, 'days') - 1)
-    //
-    //                 week[today.diff(commit.date, 'days') - 1] += 1;
-    //             }
-    //         })
-    //
-    //         result.push({
-    //             label: coll.login,
-    //             data: week.reverse(),
-    //             fill: false,
-    //             borderColor: randomcolor
-    //         })
-    //     })
-    //
-    //
-    // })
-    // setDatasets(result)
-    //console.log("datasets: " + datasets)
-
-    /* const getWeekOldCommits = (obj) => {
-        return obj.map(commit => {
-            if (moment(new Date).diff(commit.date, 'days') <= 7) {
-                return commit
-            }
-        })
-    } */
-
     return (
         <>
             <div>
-                <button onClick={() => setTimes(last7Days())}>7 Days</button>
-                <button onClick={() => setTimes(last4Weeks())}>4 Weeks</button>
-                <button onClick={() => setTimes(last6Months())}>6 Months</button>
+                <button onClick={() => {
+                    setTimes(last7Days())
+                    setSelectedSpan(1)
+                }
+                }>7 Days</button>
+                <button onClick={() => {
+                    setTimes(last4Weeks())
+                    setSelectedSpan(2)
+                }
+                }>4 Weeks</button>
+                <button onClick={() => {
+                    setTimes(last6Months())
+                    setSelectedSpan(3)
+                }
+                }>6 Months</button>
             </div>
             <Line
                 data={{
