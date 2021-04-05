@@ -53,7 +53,7 @@ export const last6Months = () => {
     let months = [];
 
     for (let i = 6; i > 0; i--) {
-        d = new Date(today.getFullYear(), today.getMonth(), 1)
+        d = new Date(today.getFullYear(), today.getMonth() - i + 1, 1)
         month = monthNames[d.getMonth()]
         months.push(month)
     }

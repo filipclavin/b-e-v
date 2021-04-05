@@ -59,7 +59,8 @@ export const getRepoCommits = async (repoURL) => {
             return res.json()
         }).then(json => {
             json.map(commit => {
-                simpleCommitData.push({ name: commit.commit.committer.name, date: commit.commit.committer.date })
+                console.log(commit)
+                simpleCommitData.push({ name: commit.author.login, date: commit.commit.committer.date })
             })
         })
 

@@ -26,10 +26,8 @@ const Activity = () => {
         const collaborators = await getRepoCollaborators(repoURL)
         const commits = await getRepoCommits(repoURL)
 
-        console.log(collaborators);
 
-        collaborators.forEach(coll => {
-
+        await collaborators.forEach(coll => {
             const week = [0, 0, 0, 0, 0, 0, 0]
             const weeks = [0, 0, 0, 0]
             const months = [0, 0, 0, 0, 0, 0]
@@ -43,37 +41,33 @@ const Activity = () => {
                 const diffWeeks = Math.ceil(diffDays / 7);
                 const diffMonths = Math.ceil(diffDays / 30)
 
-
                 if (diffDays <= 7 && selectedSpan === 1) {
-                    console.log('commit at ' + commitDate);
 
                     if (commit.name === coll) {
+
                         week[diffDays]++
                     }
                 }
 
                 if (diffDays <= 28 && selectedSpan === 2) {
-                    console.log('commit at ' + commitDate);
-
-                    if (commit.name === coll) {
-                        weeks[diffWeeks]++
-                    }
+                    if (commit.name === coll) weeks[diffWeeks]++
                 }
 
                 if (diffDays <= 182 && selectedSpan === 3) {
-                    console.log('commit at ' + commitDate);
-
-                    if (commit.name === coll) {
-                        months[diffMonths]++
-                    }
+                    console.log(coll)
+                    console.log("commit name: " + commit.name)
+                    if (commit.name === coll) months[diffMonths]++
                 }
-
-
             })
+
+            let d = week.reverse();
+            if(selectedSpan === 1) d = week;
+            else if(selectedSpan === 2) d = weeks
+            else if(selectedSpan === 3) d = months
 
             result.push({
                 label: coll,
-                data: week.reverse(),
+                data: d.reverse(),
                 fill: false,
                 borderColor: randomcolor
             })
