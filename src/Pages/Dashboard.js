@@ -30,6 +30,18 @@ const Grid = styled.div`
     "ideas uncompleted-tasks completed-tasks total-contribution"
     "ideas uncompleted-tasks completed-tasks weekly-quota"
     "sprint-time sprint-time sprint-time weekly-quota";
+
+    /* mobile view */
+
+    @media (max-width: 768px) {
+        margin: 2.5%;
+        padding: 2%;
+        max-width: 95%; 
+        display: flex;
+        flex-direction: column;
+        
+        grid-gap: 5px;
+      }
 `;
 
 const Dashboard = ({ languages }) => {
