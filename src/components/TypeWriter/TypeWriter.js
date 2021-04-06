@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 const words = [
- "Full digital overview is the best means to combat these modern issues and optimize your company for the future."];
+ "Full digital overview is the best means to combat these new modern issues and optimize your company for the future."];
 
 export default function TypeWriter() {
   const [index, setIndex] = useState(0);

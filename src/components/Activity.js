@@ -27,7 +27,7 @@ const Activity = () => {
         const commits = await getRepoCommits(repoURL)
 
 
-        await collaborators.forEach(coll => {
+        collaborators.forEach(coll => {
             const week = [0, 0, 0, 0, 0, 0, 0]
             const weeks = [0, 0, 0, 0]
             const months = [0, 0, 0, 0, 0, 0]
@@ -41,31 +41,34 @@ const Activity = () => {
                 const diffWeeks = Math.ceil(diffDays / 7);
                 const diffMonths = Math.ceil(diffDays / 30)
 
-                if (diffDays <= 7 && selectedSpan === 1) {
+                if (diffDays <= 6 && selectedSpan === 1) {
+                    console.log(commit.name + ' commited something ' + diffDays + ' days ago');
 
-                    if (commit.name === coll) {
-
+                    if (commit.name === coll || commit.login === coll) {
                         week[diffDays]++
                     }
                 }
 
                 if (diffDays <= 28 && selectedSpan === 2) {
-                    if (commit.name === coll) weeks[diffWeeks]++
+                    if (commit.name === coll || commit.login === coll) weeks[diffWeeks]++
                 }
 
                 if (diffDays <= 182 && selectedSpan === 3) {
-                    if (commit.name === coll) months[diffMonths]++
+                    if (commit.name === coll || commit.login === coll) months[diffMonths]++
                 }
             })
 
-            let d = week.reverse();
-            if(selectedSpan === 1) d = week.reverse();
-            else if(selectedSpan === 2) d = weeks.reverse()
-            else if(selectedSpan === 3) d = months.reverse()
+            let d = week.slice().reverse();
+
+            console.log(coll + ': ' + d);
+
+            if (selectedSpan === 1) d = week.slice().reverse();
+            else if (selectedSpan === 2) d = weeks.slice().reverse()
+            else if (selectedSpan === 3) d = months.slice().reverse()
 
             result.push({
                 label: coll,
-                data: d.reverse(),
+                data: d,
                 fill: false,
                 borderColor: randomcolor
             })
@@ -73,8 +76,6 @@ const Activity = () => {
         })
 
         setDatasets(result)
-
-        console.log(datasets);
 
     }
 

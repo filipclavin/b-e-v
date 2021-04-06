@@ -54,12 +54,13 @@ export const getRepoCommits = async (repoURL) => {
 
     const simpleCommitData = [];
 
-    await fetch(`${repoURL}/commits`)
+    await fetch(`${repoURL}/commits?per_page=100`)
         .then(res => {
             return res.json()
         }).then(json => {
             json.map(commit => {
-                simpleCommitData.push({ name: commit.author.login, date: commit.commit.committer.date })
+                console.log(json);
+                simpleCommitData.push({ name: commit.commit.author.name, login: commit.author.login, date: commit.commit.committer.date })
             })
         })
 
