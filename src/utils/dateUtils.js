@@ -31,7 +31,7 @@ export const last7Days = () => {
     let result = []
     for (let i = 7; i > 0; i--) {
         let d = new Date()
-        d.setDate(d.getDate())
+        d.setDate(d.getDate() - i + 1)
         result.push(formatDate(d))
     }
 
