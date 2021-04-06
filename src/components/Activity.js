@@ -59,9 +59,9 @@ const Activity = () => {
             })
 
             let d = week.reverse();
-            if(selectedSpan === 1) d = week;
-            else if(selectedSpan === 2) d = weeks
-            else if(selectedSpan === 3) d = months
+            if(selectedSpan === 1) d = week.reverse();
+            else if(selectedSpan === 2) d = weeks.reverse()
+            else if(selectedSpan === 3) d = months.reverse()
 
             result.push({
                 label: coll,

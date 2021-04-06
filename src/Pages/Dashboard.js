@@ -9,6 +9,8 @@ import WeeklyQuota from '../components/WeeklyQuota'
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser, githubLogOut } from "../utils/firebase.js"
 import { getLanguageData } from "../utils/github.js"
+import { getTrelloBoard, postNewCard, getBoardLists } from "../utils/trello.js";
+
 
 
 import { Bar, Pie, Line } from 'react-chartjs-2'
@@ -44,7 +46,11 @@ const Grid = styled.div`
       }
 `;
 
+
 const Dashboard = ({ languages }) => {
+
+    // postNewCard('603e3f1761dcdc39c5540536', 'Hello from the other side', 'sven')
+    getBoardLists('P6EjDUbm')
 
   const data = {
     labels: languages ? Object.keys(languages) : [],
