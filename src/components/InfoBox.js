@@ -12,7 +12,7 @@ const Box = styled.div`
     height: available;
 
     border-radius: 25px;
-    background-color: #2B2D3E;
+    background-color: ${({ theme }) => theme.primaryCards};
     padding: 30px;
 
     grid-area: ${props => props.gridArea};`
