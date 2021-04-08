@@ -9,25 +9,24 @@ outline: none;
 
 const Button = styled.button`
   background: transparent;
-  color: ${({ theme }) => theme.btnColor};
   border-radius: 50%;
   border:none;
   cursor: pointer;
-  padding: 0.3rem;
   position: relative;
+  margin-right: 2rem;
   z-index: 50;
   outline: none;
 `;
 
-const ThemeToggle = ({theme,  toggleTheme }) => {
+const ThemeToggle = ({theme, toggleTheme }) => {
     return (
       <>
       <Button onClick={toggleTheme}>
-      {theme === "light" ?
-      <DarkMode width="26" height="26" viewBox="0 0 26 26" style={{ fill: "#000" }}></DarkMode>
-      :<DarkMode width="26" height="26" viewBox="0 0 26 26" style={{ fill: "#fafafa" }}></DarkMode>
-    } 
-    </Button>
+        {theme === "light" ?
+        <DarkMode width="36" height="36"  style={{ fill: "#000" }}></DarkMode>
+        :<DarkMode width="36" height="36"  style={{ fill: "#fafafa" }}></DarkMode>
+      } 
+      </Button>
 
     
     </>
