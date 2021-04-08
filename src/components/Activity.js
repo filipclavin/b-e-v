@@ -1,10 +1,26 @@
 import { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 import randomcolor from 'randomcolor'
-import moment from 'moment'
-
+import styled from 'styled-components'
 import { getRepoCommits, getRepoCollaborators } from "../utils/github.js";
 import { last7Days, last4Weeks, last6Months } from "../utils/dateUtils.js";
+
+const Buttons = styled.div`
+display: flex;
+flex-direction: column;
+`
+
+
+const Button = styled.button`
+width: 5rem;
+height: 2rem;
+margin-bottom: 0.5rem;
+padding: 0.5rem;
+outline: none;
+border: none;
+border-radius: 0.3rem;
+background: rgba(75, 192, 192, 0.8);
+`
 
 const Activity = () => {
     const [repoURL, setRepoURL] = useState('https://api.github.com/repos/filipclavin/b-e-v')
@@ -81,24 +97,25 @@ const Activity = () => {
 
     return (
         <>
-            <div>
-                <button onClick={() => {
+            <Buttons>
+                <Button onClick={() => {
                     setTimes(last7Days())
                     setSelectedSpan(1)
                 }
-                }>7 Days</button>
-                <button onClick={() => {
+                }>7 Days</Button>
+                <Button onClick={() => {
                     setTimes(last4Weeks())
                     setSelectedSpan(2)
                 }
-                }>4 Weeks</button>
-                <button onClick={() => {
+                }>4 Weeks</Button>
+                <Button onClick={() => {
                     setTimes(last6Months())
                     setSelectedSpan(3)
                 }
-                }>6 Months</button>
-            </div>
+                }>6 Months</Button>
+            </Buttons>
             <Line
+                options={{ maintainAspectRatio: true }}
                 data={{
                     labels: times,
                     datasets: datasets

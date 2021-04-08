@@ -15,11 +15,11 @@ import { getTrelloBoard, postNewCard, getBoardLists } from "../utils/trello.js";
 
 import { Bar, Pie, Line } from 'react-chartjs-2'
 import styled from 'styled-components'
-import { ThemeProvider } from 'styled-components'
+/* import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '../components/themes/themes'
 import  {useDarkTheme} from '../components/themes//toggle/UseDarkTheme'
 import { GlobalStyle } from '../components/themes/GlobalStyle'
-import ThemeToggle from "../components/themes/toggle/toggleTheme"
+import ThemeToggle from "../components/themes/toggle/toggleTheme" */
 
 
 const Grid = styled.div`
@@ -32,11 +32,11 @@ const Grid = styled.div`
   grid-gap: 5px;
 
   grid-template-areas:
-    "header header header header"
-    "languages burndown activity total-contribution"
-    "ideas uncompleted-tasks completed-tasks total-contribution"
-    "ideas uncompleted-tasks completed-tasks weekly-quota"
-    "sprint-time sprint-time sprint-time weekly-quota";
+    "header header header"
+    "activity languages burndown"
+    "ideas uncompleted-tasks completed-tasks"
+    "ideas uncompleted-tasks completed-tasks"
+    "sprint-time sprint-time sprint-time";
 
     /* mobile view */
 
@@ -53,17 +53,17 @@ const Grid = styled.div`
 
 
 const Dashboard = ({ languages }) => {
-
-  const [theme, themeToggler, mountedComponent] = useDarkTheme();
+/* 
+  const [theme, themeToggler, mountedComponent] = useDarkTheme(); */
   const [username, setUsername] = useState('')
   useEffect(() => {
     getUsers()
   }, [])
 
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  /* const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
 
-  if(!mountedComponent) return <div/>
+  if(!mountedComponent) return <div/> */
 
 
     // postNewCard('603e3f1761dcdc39c5540536', 'Hello from the other side', 'sven')
@@ -95,32 +95,32 @@ const Dashboard = ({ languages }) => {
   }
 
   return (
-
-    <ThemeProvider theme={themeMode}>
-      <ThemeToggle theme={theme} toggleTheme={themeToggler} />
-            <GlobalStyle/>
-
+    <>
     <Grid className="App">
       <Header gridArea="header" members={["beppe", "jeppe", "beppson"]}>
         {/*<input type="text" value={repoCreator} onChange={event => setRepoCreator(event.target.value)}/>*/}
         {/*<button onClick={doIt}>pressy</button>*/}
       </Header>
 
+      <InfoBox gridArea="activity">
+        <Activity />
+      </InfoBox>
+
       <InfoBox gridArea="languages">
         <Pie data={getLanguageData()} />
       </InfoBox>
-
+{/* 
       <InfoBox gridArea="weekly-quota">
         <QuotaBar color="#F9FD53" percent="38" />
         <QuotaBar color="#C39AE3" percent="81" />
         <QuotaBar color="#F3A0A0" percent="65" />
         <QuotaBar color="#6BBD57" percent="15" />
         <QuotaBar color="#87C0E0" percent="97" />
-      </InfoBox>
+      </InfoBox> */}
 
-      <InfoBox gridArea="total-contribution">
+     {/*  <InfoBox gridArea="total-contribution">
         <Bar data={data} />
-      </InfoBox>
+      </InfoBox> */}
 
       <InfoBox gridArea="burndown">
         <Line
@@ -143,10 +143,6 @@ const Dashboard = ({ languages }) => {
             ],
           }}
         />
-      </InfoBox>
-
-      <InfoBox gridArea="activity">
-        <Activity />
       </InfoBox>
 
       <InfoBox gridArea="sprint-time"></InfoBox>
@@ -174,7 +170,7 @@ const Dashboard = ({ languages }) => {
       <button onClick={() => removeUser(username)}>remove user</button>
       <button onClick={githubLogOut}>Log out</button>
     </Grid>
-    </ThemeProvider>
+    </>
   );
 };
 
