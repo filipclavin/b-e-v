@@ -94,7 +94,7 @@ const Modal = ({ showModal, setShowModal }) => {
                             <ModalContent>  
                                 <CloseModalBtn aria-label='Close Modal' onClick={() => setShowModal (prev => !prev)} />                          
                                     <h3>Dont know why i put this in, but now we have it if we want to use it</h3>
-                                    <h1>LOOOOOL</h1>
+                                    <h5>LOOOOOL</h5>
                                 </ModalContent>
                                 
                         </ModalWrapper>
