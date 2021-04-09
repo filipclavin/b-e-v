@@ -12,7 +12,7 @@ width: 32px;
 heigth: 32px;
 padding: 0;
 z-index: 20; 
- &:hover,
+
  &:focus,
  &:hover {
      color: #ff6c70;
@@ -23,13 +23,11 @@ const ModalBg = styled.div`
     position: absolute;
     top:0;
     left:0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 20;
+    display: block;
+    z-index: 30;
 `;
 
 const ModalWrapper = styled.div`
@@ -42,7 +40,7 @@ const ModalWrapper = styled.div`
     box-shadow: 6px 6px 10px ${({ theme }) => theme.shadow};;
     background: ${({ theme }) => theme.bgModal};
     color: #fafafa;
-    z-index: 10;
+    z-index: 31;
     border-radius: 20px;
     font-size: 1.2rem;
 
@@ -54,6 +52,7 @@ const ModalWrapper = styled.div`
 `;
 
 const ModalContent = styled.div`
+position: relative;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -61,6 +60,7 @@ align-items: left;
 line-height: 1.2;
 padding: 20px 50px;
 color: #fafafa;
+z-index: 32;
 
 
 p {
@@ -76,7 +76,7 @@ button {
 }
 `;
 
-const Modal = ({ showModal, setShowModal, user, setUser,  }) => {
+const Modal = ({ showModal, setShowModal }) => {
         const modalRef = useRef();
 
 
@@ -90,10 +90,13 @@ const Modal = ({ showModal, setShowModal, user, setUser,  }) => {
         <>
                 <ModalBg ref={modalRef} onClick={closeModal}>
                         <ModalWrapper>
-                            <ModalContent>                            
-                                <h3>Dont know why i put this in, but now we have it if we want to use it</h3>
-                            </ModalContent>
-                                <CloseModalBtn aria-label='Close Modal' onClick={() => setShowModal (prev => !prev)} />
+                        
+                            <ModalContent>  
+                                <CloseModalBtn aria-label='Close Modal' onClick={() => setShowModal (prev => !prev)} />                          
+                                    <h3>Dont know why i put this in, but now we have it if we want to use it</h3>
+                                    <h1>LOOOOOL</h1>
+                                </ModalContent>
+                                
                         </ModalWrapper>
                 </ModalBg>
         </>

@@ -80,9 +80,12 @@ const UserCircle = styled.img`
 
 const Header = (props) => {
 
+    const [data, setData ] = useState([]);
     const [theme, themeToggler] = useDarkTheme();
+
     const [showModal, setShowModal ] = useState(false);
-    const [data, setData ] = useState([])
+
+   
 
     useEffect(() => {
         loadData();
@@ -102,11 +105,11 @@ const loadData = async () => {
         setShowModal(prev => !prev)
     }
 
-    console.log(data)
-
     return (
         <ThemeProvider theme={themeMode}>
+             {showModal && <Modal className="modal" showModal={showModal} setShowModal={setShowModal}/>}
                     <HeaderBar gridArea={props.gridArea}>
+                   
                         <GlobalStyle/> 
                           
                         <Users>                       
@@ -127,7 +130,6 @@ const loadData = async () => {
                             
                             <StyledDiv>
                                 <Button onClick={openModal} >MODAL</Button>
-                                {showModal && <Modal className="modal" showModal={showModal} setShowModal={setShowModal}/>}
                                 <ThemeToggle theme={theme} toggleTheme={themeToggler} />
                             </StyledDiv>
                     </HeaderBar>

@@ -96,7 +96,7 @@ const Dashboard = ({ languages }) => {
   return (
     <>
     <Grid className="App">
-      <Header gridArea="header" members={["beppe", "jeppe", "beppson"]}>
+      <Header gridArea="header" members={["", ""]}>
         {/*<input type="text" value={repoCreator} onChange={event => setRepoCreator(event.target.value)}/>*/}
         {/*<button onClick={doIt}>pressy</button>*/}
       </Header>
