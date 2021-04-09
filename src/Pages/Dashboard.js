@@ -5,7 +5,6 @@ import Card from "../components/Card.js";
 import TrelloColumn from "../components/TrelloColumn.js";
 import Activity from "../components/Activity.js"
 import WeeklyQuota from '../components/WeeklyQuota'
-
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser, githubLogOut } from "../utils/firebase.js"
 import { getLanguageData } from "../utils/github.js"

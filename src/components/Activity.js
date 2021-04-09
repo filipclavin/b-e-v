@@ -12,6 +12,7 @@ flex-direction: column;
 
 
 const Button = styled.button`
+color: #fafafa;
 width: 5rem;
 height: 2rem;
 margin-bottom: 0.5rem;
@@ -19,7 +20,10 @@ padding: 0.5rem;
 outline: none;
 border: none;
 border-radius: 0.3rem;
-background: rgba(75, 192, 192, 0.8);
+background: rgba(75, 192, 192, 0.7);
+&:hover {
+    background: rgba(75, 192, 192, 0.2);
+}
 `
 
 const Activity = () => {
@@ -115,7 +119,7 @@ const Activity = () => {
                 }>6 Months</Button>
             </Buttons>
             <Line
-                options={{ maintainAspectRatio: true }}
+                options={{ maintainAspectRatio: true}}
                 data={{
                     labels: times,
                     datasets: datasets
