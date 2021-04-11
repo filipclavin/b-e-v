@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { ThemeProvider } from 'styled-components'
+/* import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '../components/themes/themes'
 import  {useDarkTheme} from '../components/themes//toggle/UseDarkTheme'
 import { GlobalStyle } from '../components/themes/GlobalStyle'
-import ThemeToggle from "../components/themes/toggle/toggleTheme"
+import ThemeToggle from "../components/themes/toggle/toggleTheme" */
 import Modal from './Modal/Modal'
 
 const HeaderBar = styled.div`
@@ -39,6 +39,7 @@ const ProfileName = styled.h3`
       font-size: 0.6rem;
       padding-left: 0.3rem;
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
+      text-transform: uppercase;
       `
 
 const UserCircle = styled.img`
@@ -81,11 +82,7 @@ const UserCircle = styled.img`
 const Header = (props) => {
 
     const [data, setData ] = useState([]);
-    const [theme, themeToggler] = useDarkTheme();
-
     const [showModal, setShowModal ] = useState(false);
-
-   
 
     useEffect(() => {
         loadData();
@@ -98,43 +95,34 @@ const loadData = async () => {
     .then(data => setData(data));
 }
 
-
-    const themeMode = theme === 'light' ? lightTheme : darkTheme;
-
     const openModal = () => {
         setShowModal(prev => !prev)
     }
 
     return (
-        <ThemeProvider theme={themeMode}>
-             {showModal && <Modal className="modal" showModal={showModal} setShowModal={setShowModal}/>}
-                    <HeaderBar gridArea={props.gridArea}>
-                   
-                        <GlobalStyle/> 
-                          
-                        <Users>                       
-                            {
-                                props.members ?
-                                    props.members.map(member => {
-                                        return (
-                                        
-                                            <User>
-                                                <UserCircle src={data.avatar_url}/>
-                                                <ProfileName>{data.name}</ProfileName>
-                                            </User>
-                                        
-                                        )
-                                    }) : null
-                            }
-                            </Users>
-                            
-                            <StyledDiv>
-                                <Button onClick={openModal} >MODAL</Button>
-                                <ThemeToggle theme={theme} toggleTheme={themeToggler} />
-                            </StyledDiv>
-                    </HeaderBar>
-                </ThemeProvider>
+
+        <HeaderBar gridArea={props.gridArea}>
+            {showModal && <Modal className="modal" showModal={showModal} setShowModal={setShowModal}/>}  
+                <Users>                       
+                    {
+                        props.members ?
+                            props.members.map(member => {
+                                return (
+                                
+                                    <User>
+                                        <UserCircle src={data.avatar_url}/>
+                                        <ProfileName>{data.name}</ProfileName>
+                                    </User>
+                                
+                                )
+                            }) : null
+                    }
+                </Users>
+                
+            <StyledDiv>
+                <Button onClick={openModal} >MODAL</Button>
+            </StyledDiv>
+        </HeaderBar>
     )
 }
-
 export default Header
