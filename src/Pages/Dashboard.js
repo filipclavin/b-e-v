@@ -9,7 +9,7 @@ import WeeklyQuota from '../components/WeeklyQuota'
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser, githubLogOut } from "../utils/firebase.js"
 import { getLanguageData } from "../utils/github.js"
-import { getTrelloBoard, postNewCard, getBoardLists } from "../utils/trello.js";
+import { /*getTrelloBoard, postNewCard,*/ getBoardLists } from "../utils/trello.js";
 
 
 

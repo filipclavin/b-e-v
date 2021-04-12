@@ -26,12 +26,13 @@ const Activity = () => {
         const collaborators = await getRepoCollaborators(repoURL)
         const commits = await getRepoCommits(repoURL)
 
-
-        const test = collaborators[1];
-        console.log(test);
+        let curentUser = "SjostromJesper";
+        const test = collaborators.filter((currentuser) => [curentUser].includes(currentuser));
+        console.log("test: ",test);
+        
 
     
-        collaborators.forEach(coll => {
+        test.forEach(coll => {
             const week = [0, 0, 0, 0, 0, 0, 0]
             const weeks = [0, 0, 0, 0]
             const months = [0, 0, 0, 0, 0, 0]
@@ -80,9 +81,6 @@ const Activity = () => {
         })
 
         setDatasets(result)
-        console.log(result[0]);
-        console.log(datasets)
-
     }
 
     return (

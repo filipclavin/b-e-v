@@ -41,13 +41,13 @@ export const getBoardLists = (boardId) => {
         method: 'GET'
     })
         .then(response => {
-            console.log(
+            /*console.log(
                 `Response: ${response.status} ${response.statusText}`
-            );
+            );*/
             return response.text();
         })
-        .then(text => console.log(text))
-        .catch(err => console.error(err));
+        //.then(text => console.log(text))
+        //.catch(err => console.error(err));
 }
 
 export const getSelectedList = (listId) => {
@@ -65,7 +65,7 @@ export const getSelectedList = (listId) => {
 }
 
 
-const memberId = '5fb28148005793058ac2ba8d' //robbans id
+//const memberId = '5fb28148005793058ac2ba8d' //robbans id
 export const getMemberFromId = (memberId) => {
     fetch(`https://api.trello.com/1/members/${memberId}?key=${key}&token=${token}`, {
         method: 'GET',

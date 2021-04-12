@@ -111,7 +111,7 @@ const MobileDashboard = ({ languages }) => {
               <UserActivity />
             </InfoBox> 
 
-            <InfoBox gridArea="weekly-quota">
+            <InfoBox gridArea="daily-quota">
                   <UserQuota color="#8d0d0d" percent="38"/>
             </InfoBox>
 
