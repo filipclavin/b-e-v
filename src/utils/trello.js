@@ -82,3 +82,6 @@ export const getMemberFromId = (memberId) => {
         .then(text => console.log(text))
         .catch(err => console.error(err));
 }
+
+
+//https://api.trello.com/1/members/5fb28148005793058ac2ba8d?key=6d3cbfc77587e09c39ce716ffc8d43f2&token=0dcb80152cd2afa6dcdb96e1d333d613cfb37f22b68cb780199513488a6781f5
