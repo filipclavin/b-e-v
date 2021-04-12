@@ -1,39 +1,33 @@
 import React from 'react'
 import { func, string } from 'prop-types';
 import styled from "styled-components"
-import { Light } from '@styled-icons/material-twotone/Light'
-import { Darkreader } from '@styled-icons/simple-icons/Darkreader'
+import { DarkTheme } from '@styled-icons/fluentui-system-filled/DarkTheme'
 
-const LightTheme = styled(Light)`
-outline:none;
-`
-const DarkTheme = styled(Darkreader)`
+const DarkMode = styled(DarkTheme)`
 outline: none;
 `
 
 const Button = styled.button`
   background: transparent;
-  color: ${({ theme }) => theme.btnColor};
   border-radius: 50%;
   border:none;
   cursor: pointer;
-  padding: 0.3rem;
-  position: fixed;
-  top: 0;
-  right: 1vw;
+  position: absolute;
+  top: 1rem;
+  right: 8rem;
   z-index: 50;
   outline: none;
 `;
 
-const ThemeToggle = ({theme,  toggleTheme }) => {
+const ThemeToggle = ({theme, toggleTheme }) => {
     return (
       <>
       <Button onClick={toggleTheme}>
-      {theme === "light" ?
-      <DarkTheme width="26" height="26" viewBox="0 0 26 26" style={{ fill: "#000" }}></DarkTheme>
-      :<LightTheme width="26" height="26" viewBox="0 0 26 26" style={{ fill: "#fafafa" }}></LightTheme>
-    } 
-    </Button>
+        {theme === "light" ?
+        <DarkMode width="36" height="36"  style={{ fill: "#333333" }}></DarkMode>
+        :<DarkMode width="36" height="36"  style={{ fill: "#f2f2f2" }}></DarkMode>
+      } 
+      </Button>
 
     
     </>
