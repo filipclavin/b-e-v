@@ -1,15 +1,11 @@
 import InfoBox from "../components/InfoBox.js";
-import QuotaBar from "../components/QuotaBar.js";
 import Header from "../components/Header.js";
-import Card from "../components/Card.js";
-import TrelloColumn from "../components/TrelloColumn.js";
 import Activity from "../components/Activity.js"
-import WeeklyQuota from '../components/WeeklyQuota'
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser, githubLogOut } from "../utils/firebase.js"
 import { getLanguageData } from "../utils/github.js"
  import { getTrelloBoard, postNewCard, getBoardLists } from "../utils/trello.js";
- 
+
 
 
 import { Bar, Pie, Line } from 'react-chartjs-2'
@@ -19,6 +15,7 @@ import { lightTheme, darkTheme } from '../components/themes/themes'
 import  {useDarkTheme} from '../components/themes//toggle/UseDarkTheme'
 import { GlobalStyle } from '../components/themes/GlobalStyle'
 import ThemeToggle from "../components/themes/toggle/toggleTheme"
+import TrelloTaskList from "../components/TrelloTaskList.js";
 
 
 const Grid = styled.div`
@@ -62,7 +59,7 @@ const Dashboard = ({ languages }) => {
 
     // postNewCard('603e3f1761dcdc39c5540536', 'Hello from the other side', 'sven')
      getBoardLists('P6EjDUbm')
- 
+
   const data = {
     labels: languages ? Object.keys(languages) : [],
     datasets: [{
@@ -89,9 +86,9 @@ const Dashboard = ({ languages }) => {
   }
 
   return (
-    
+
     <ThemeProvider theme={themeMode}>
-       <GlobalStyle/> 
+       <GlobalStyle/>
         <Grid className="App">
             <Header gridArea="header" members={["", ""]}>
               {/*<input type="text" value={repoCreator} onChange={event => setRepoCreator(event.target.value)}/>*/}
@@ -99,21 +96,13 @@ const Dashboard = ({ languages }) => {
             </Header>
             <ThemeToggle theme={theme} toggleTheme={themeToggler} />
 
-          <InfoBox gridArea="activity">
-            <Activity />
-          </InfoBox>
+            <Activity/>
 
           <InfoBox gridArea="languages">
             <Pie data={getLanguageData()} />
           </InfoBox>
-    {/* 
-          <InfoBox gridArea="weekly-quota">
-            <QuotaBar color="#F9FD53" percent="38" />
-            <QuotaBar color="#C39AE3" percent="81" />
-            <QuotaBar color="#F3A0A0" percent="65" />
-            <QuotaBar color="#6BBD57" percent="15" />
-            <QuotaBar color="#87C0E0" percent="97" />
-          </InfoBox> */}
+
+
 
         {/*  <InfoBox gridArea="total-contribution">
             <Bar data={data} />
@@ -142,21 +131,8 @@ const Dashboard = ({ languages }) => {
             />
           </InfoBox>
 
-          <InfoBox gridArea="sprint-time"></InfoBox>
-
-          <TrelloColumn gridArea="ideas">
-            <Card>
-              <p>Hello!</p>
-
-            </Card>
-          </TrelloColumn>
-
-          <TrelloColumn gridArea="uncompleted-tasks">
-          </TrelloColumn>
-
-          <TrelloColumn gridArea="completed-tasks">
-           {/*  <WeeklyQuota /> */}
-          </TrelloColumn>
+          <TrelloTaskList cards={[{text: "hello1"}, {text: "hello2"}, {text: "hello3"}, {text: "hello4"}]}/>
+          <Activity/>
 
           <input
             value={username}
@@ -168,7 +144,7 @@ const Dashboard = ({ languages }) => {
           <button onClick={githubLogOut}>Log out</button>
         </Grid>
     </ThemeProvider>
-    
+
   );
 };
 

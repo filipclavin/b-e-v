@@ -7,8 +7,8 @@ const Box = styled.div`
     align-items: center;
     justify-content: space-evenly;
     
-    width: available;
-    height: available;
+    width: fit-content;
+    height: fit-content;
 
     border-radius: 25px;
     background-color: ${({ theme }) => theme.primaryCards};

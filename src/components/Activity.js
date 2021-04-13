@@ -4,6 +4,7 @@ import randomcolor from 'randomcolor'
 import styled from 'styled-components'
 import { getRepoCommits, getRepoCollaborators } from "../utils/github.js";
 import { last7Days, last4Weeks, last6Months } from "../utils/dateUtils.js";
+import InfoBox from "./InfoBox.js";
 
 const Buttons = styled.div`
 display: flex;
@@ -62,7 +63,6 @@ const Activity = () => {
                 const diffMonths = Math.ceil(diffDays / 30)
 
                 if (diffDays <= 6 && selectedSpan === 1) {
-                    console.log(commit.name + ' commited something ' + diffDays + ' days ago');
 
                     if (commit.name === coll || commit.login === coll) {
                         week[diffDays]++
@@ -80,7 +80,6 @@ const Activity = () => {
 
             let d = week.slice().reverse();
 
-            console.log(coll + ': ' + d);
 
             if (selectedSpan === 1) d = week.slice().reverse();
             else if (selectedSpan === 2) d = weeks.slice().reverse()
@@ -100,7 +99,7 @@ const Activity = () => {
     }
 
     return (
-        <>
+        <InfoBox>
             <Buttons>
                 <Button onClick={() => {
                     setTimes(last7Days())
@@ -125,7 +124,7 @@ const Activity = () => {
                     datasets: datasets
                 }}
             />
-        </>
+        </InfoBox>
     )
 }
 

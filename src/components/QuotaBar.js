@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-const OuterBar = styled.div`
+
+
+const QuotaBar = (props) => {
+  const maxHeight = 300;
+  const percentCalc = maxHeight / 100 * props.percent;
+
+    const OuterBar = styled.div`
   height: 300px;
   width: 20px;
   background-color: #E8CFCF;
@@ -11,16 +17,11 @@ const OuterBar = styled.div`
   flex-direction: column-reverse;
   border-radius: 25px;`
 
-const InnerBar = styled.div`
+    const InnerBar = styled.div`
   height: ${props => props.percentCalc}px;
   width: 20px;
   background-color: ${props => props.color};
   border-radius: 25px;`
-
-const QuotaBar = (props) => {
-  const maxHeight = 300;
-  const percentCalc = maxHeight / 100 * props.percent;
-
 
   return (
     <OuterBar percentCalc={percentCalc}>
