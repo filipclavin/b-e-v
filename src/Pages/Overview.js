@@ -7,7 +7,7 @@ import { githubLogOut, getCurrentUser } from "../utils/firebase"
 
 const Overview = () => {
 
-    const [dashboard, setDashboard] = useState()
+    const [selectedRepo, setSelectedRepo] = useState()
     const [repos, setRepos] = useState()
 
     useEffect(async () => {
@@ -23,15 +23,18 @@ const Overview = () => {
         <>
             <button onClick={githubLogOut}>Log out</button>
             {
-                dashboard
-                    ? dashboard
-                    : repos
-                        ? repos.map(repo => {
+                selectedRepo ?
+                    <>
+                        <button onClick={() => setSelectedRepo()}>Back to Overview</button>
+                        <Dashboard repo={selectedRepo} />
+                    </> :
+                    repos ?
+                        repos.map(repo => {
                             return (
-                                <h1>{repo.name}</h1>
+                                <h1 onClick={() => setSelectedRepo(repo.url)}>{repo.name}</h1>
                             )
-                        })
-                        : null
+                        }) :
+                        null
             }
         </>
     )
