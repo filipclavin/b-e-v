@@ -27,7 +27,7 @@ function App() {
     return (
         <>
             {loggedIn
-                ? <Dashboard />
+                ? <Overview />
                 : <Landing />
             }
         </>
