@@ -1,10 +1,16 @@
 import { GITHUB_ACCESS_TOKEN } from "../constants"
+import { getCurrentUser } from "./firebase"
 
 
 export const getRepos = async (username) => {
     const repos = []
 
-    await fetch(`https://api.github.com/users/${username}/repos`)
+    await fetch(`https://api.github.com/users/${username}/repos`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${GITHUB_ACCESS_TOKEN}`
+        }
+    })
         .then(response => {
             return response.json()
         })
@@ -18,7 +24,12 @@ export const getRepos = async (username) => {
 }
 
 export const getLanguageData = async (username, repo) => {
-    return await fetch(`https://api.github.com/repos/${username}/${repo}/languages`)
+    return await fetch(`https://api.github.com/repos/${username}/${repo}/languages`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${GITHUB_ACCESS_TOKEN}`
+        }
+    })
         .then(res => {
             return res.json()
         })

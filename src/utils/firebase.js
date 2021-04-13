@@ -1,7 +1,9 @@
+import { ArrowAutofitHeight } from "@styled-icons/fluentui-system-filled";
 import firebase from "firebase";
 import "firebase/firestore";
 import { FIREBASE_KEY } from "../constants"
 
+const users = new Map();
 const provider = new firebase.auth.GithubAuthProvider();
 
 export const githubLogIn = () => {
@@ -9,13 +11,9 @@ export const githubLogIn = () => {
     .auth()
     .signInWithPopup(provider)
 
-    .then(function (result) {
-      /* const token = result.credential.accessToken;
-      const user = result.user; */
-
-      console.log(result.additionalUserInfo.username);
-      /* console.log(token);
-      console.log(user); */
+    .then(function (res) {
+      console.log(res);
+      createUser(res.additionalUserInfo.username, res.user.uid)
     })
     .catch(function (error) {
       const errorCode = error.code;
@@ -49,7 +47,6 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-const users = new Map();
 
 export const getUsers = () => {
   db.collection("companies")
@@ -60,13 +57,12 @@ export const getUsers = () => {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         users.set(doc.data().username, doc.id);
-        /* console.log(doc.data()); */
       });
     });
 };
 
-export const createUser = (username) => {
-  db.collection("companies").doc("company1").collection("users").doc().set({
+export const createUser = (username, uid) => {
+  db.collection("companies").doc("company1").collection("users").doc(uid).set({
     username: username
   })
     .then(() => {
@@ -87,4 +83,21 @@ export const removeUser = (username) => {
   });
 
   getUsers()
+}
+
+export const getCurrentUser = async () => {
+  const uid = firebase.auth().currentUser.uid
+  let username = 'hej'
+
+  await db.collection("companies").doc("company1").collection("users").doc(uid).get()
+    .then((doc) => {
+      return doc.data().username
+    })
+    .then(usernamePromise => {
+      username = usernamePromise
+    })
+
+  console.log(username);
+
+  return username
 }
