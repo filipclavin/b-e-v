@@ -86,7 +86,7 @@ const Dashboard = ({ repo }) => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <Grid className="App">
-        <Header gridArea="header" members={["", ""]}>
+        <Header gridArea="header" members={[""]}>
           {/*<input type="text" value={repoCreator} onChange={event => setRepoCreator(event.target.value)}/>*/}
           {/*<button onClick={doIt}>pressy</button>*/}
         </Header>

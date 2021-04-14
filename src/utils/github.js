@@ -2,6 +2,25 @@ import { GITHUB_ACCESS_TOKEN } from "../constants"
 import { getCurrentUser } from "./firebase"
 
 
+export const getUser = async (username) => {
+    const userData = []
+
+    await fetch(`https://api.github.com/users/${username}/`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${GITHUB_ACCESS_TOKEN}`
+        }
+    })
+        .then(response => {
+            return response.json()
+        })
+        .then(data=> {
+                userData.push(data)
+        })
+
+    return userData;
+}
+
 export const getRepos = async (username) => {
     const repos = []
 

@@ -7,6 +7,8 @@ import { GlobalStyle } from '../components/themes/GlobalStyle'
 import ThemeToggle from "../components/themes/toggle/toggleTheme" */
 import Modal from './Modal/Modal'
 
+import { getCurrentUser } from "./../utils/firebase"
+
 const HeaderBar = styled.div`
     position: relative;
     width: 100vw;
@@ -76,21 +78,20 @@ const UserCircle = styled.img`
 `
 
 
-  const API_URL = `https://api.github.com/users/robonexx`;
-
-
 const Header = (props) => {
 
-    const [data, setData ] = useState([]);
+    const [data, setData ] = useState({});
     const [showModal, setShowModal ] = useState(false);
 
-    useEffect(() => {
-        loadData();
+
+    useEffect(async () => {
+        loadData(await getCurrentUser());
         // getData();
 },[])
 
-const loadData = async () => {
-    await fetch(API_URL)
+const loadData = async (username) => {
+    getCurrentUser(username)
+    await fetch(`https://api.github.com/users/${username}`)
     .then(res => res.json())
     .then(data => setData(data));
 }
