@@ -51,6 +51,7 @@ const Dashboard = ({ languages }) => {
 
   const [theme, themeToggler] = useDarkTheme();
   const [username, setUsername] = useState('')
+
   useEffect(() => {
     getUsers()
   }, [])
@@ -90,7 +91,7 @@ const Dashboard = ({ languages }) => {
     <ThemeProvider theme={themeMode}>
        <GlobalStyle/>
         <Grid className="App">
-            <Header gridArea="header" members={["", ""]}>
+            <Header gridArea="header" members={[""]}>
               {/*<input type="text" value={repoCreator} onChange={event => setRepoCreator(event.target.value)}/>*/}
               {/*<button onClick={doIt}>pressy</button>*/}
             </Header>
