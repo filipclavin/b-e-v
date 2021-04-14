@@ -2,6 +2,7 @@ import { ArrowAutofitHeight } from "@styled-icons/fluentui-system-filled";
 import firebase from "firebase";
 import "firebase/firestore";
 import { FIREBASE_KEY } from "../constants"
+import randomcolor from 'randomcolor'
 
 const users = new Map();
 const provider = new firebase.auth.GithubAuthProvider();
@@ -87,7 +88,7 @@ export const removeUser = (username) => {
 
 export const getCurrentUser = async () => {
   const uid = firebase.auth().currentUser.uid
-  let username = 'hej'
+  let username
 
   await db.collection("companies").doc("company1").collection("users").doc(uid).get()
     .then((doc) => {

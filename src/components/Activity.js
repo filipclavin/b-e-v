@@ -27,15 +27,14 @@ background: rgba(75, 192, 192, 0.7);
 }
 `
 
-const Activity = () => {
-    const [repoURL, setRepoURL] = useState('https://api.github.com/repos/filipclavin/b-e-v')
+const Activity = ({ repo }) => {
     const [datasets, setDatasets] = useState()
     const [times, setTimes] = useState(last7Days())
     const [selectedSpan, setSelectedSpan] = useState(1)
 
     useEffect(async () => {
         setData()
-    }, [times, repoURL])
+    }, [times])
 
     const setData = async () => {
 
@@ -44,8 +43,8 @@ const Activity = () => {
         const today = new Date()
         today.setHours(0, 0, 0)
 
-        const collaborators = await getRepoCollaborators(repoURL)
-        const commits = await getRepoCommits(repoURL)
+        const collaborators = await getRepoCollaborators(repo)
+        const commits = await getRepoCommits(repo)
 
 
         collaborators.forEach(coll => {
@@ -118,7 +117,7 @@ const Activity = () => {
                 }>6 Months</Button>
             </Buttons>
             <Line
-                options={{ maintainAspectRatio: true}}
+                options={{ maintainAspectRatio: true }}
                 data={{
                     labels: times,
                     datasets: datasets
