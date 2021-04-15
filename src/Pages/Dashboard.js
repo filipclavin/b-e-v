@@ -41,7 +41,7 @@ const Grid = styled.div`
         max-width: 95%; 
         display: flex;
         flex-direction: column;
-        
+
         grid-gap: 5px;
       }
 `;
@@ -127,7 +127,7 @@ const Dashboard = ({ repo }) => {
           />
         </InfoBox>
 
-        <TrelloTaskList cards={[{ text: "hello1" }, { text: "hello2" }, { text: "hello3" }, { text: "hello4" }]} />
+        <TrelloTaskList/>
       </Grid>
     </ThemeProvider>
 

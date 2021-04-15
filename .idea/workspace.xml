@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aaea9d1-3d14-4a8b-9d6c-ed54f102b114" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InfoBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InfoBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TrelloTaskList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TrelloTaskList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/trello.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/trello.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,9 +36,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/animation" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.trello.js">
+    <configuration name="trello.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/utils/trello.js" working-dir="$PROJECT_DIR$/src/utils">
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -47,6 +55,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.trello.js" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -62,7 +71,8 @@
       <workItem from="1616666942100" duration="568000" />
       <workItem from="1616668248592" duration="28198000" />
       <workItem from="1617621322771" duration="18856000" />
-      <workItem from="1618217254807" duration="604000" />
+      <workItem from="1618217254807" duration="33725000" />
+      <workItem from="1618397900355" duration="8216000" />
     </task>
     <servers />
   </component>

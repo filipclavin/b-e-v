@@ -7,6 +7,8 @@ const Box = styled.div`
     align-items: center;
     justify-content: space-evenly;
     
+  min-width: 0;
+  min-height: 0;
     width: fit-content;
     height: fit-content;
 

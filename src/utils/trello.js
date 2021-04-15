@@ -55,14 +55,17 @@ export const getBoardLists = async (boardId) => {
 }
 
 export const getSelectedList = async (listId) => {
-    let data = null;
+    let data = [];
+
     await fetch(`https://api.trello.com/1/lists/${listId}/cards?key=${key}&token=${token}`, {
         method: 'GET'
     })
         .then(response => {
             return response.text();
         })
-        .then(text => data = text)
+        .then(text => {
+            data.push(text)
+        })
         .catch(err => console.error(err));
 
     if (data) {
@@ -117,7 +120,34 @@ const thisIsTheOneFunctionToConnectThemAllForABigTrelloActivityBoard = () => {
     return memberMap
 }
 
-setTimeout( () => {
-    console.log(thisIsTheOneFunctionToConnectThemAllForABigTrelloActivityBoard())
-}, 1000)
+
+export const getTrelloCards = async (emojiToken) => {
+    const data = await getBoardLists("P6EjDUbm").then((res) => {
+        const lists = [];
+        JSON.parse(res).forEach(list => {
+
+            if (list.name.charAt(0) === emojiToken) {
+                lists.push(list.id)
+            }
+        })
+        return lists
+    })
+
+    const cards = []
+    for(const item of data) {
+        await getSelectedList(item).then((res) => {
+            cards.push(JSON.parse(res))
+        })
+    }
+
+    const merged = [].concat.apply([], cards);
+
+    const trelloCards = []
+    merged.forEach(card => {
+        trelloCards.push(card.name)
+    })
+
+    return trelloCards
+}
+
 
