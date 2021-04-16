@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react"
-import { Router, Switch } from "react-router"
 import { getRepos } from "../utils/github"
-import { getLanguageData } from "../utils/github"
 import Dashboard from "./Dashboard"
 import { githubLogOut, getCurrentUser } from "../utils/firebase"
-import Header from '../components/Header'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -109,7 +106,7 @@ const Overview = () => {
     if (repos) console.log(repos);
 
     return (
-        <>           
+        <>
             {
                 selectedRepo ?
                     <>
@@ -118,7 +115,7 @@ const Overview = () => {
                         <button onClick={githubLogOut}>Log out</button>
                         <button onClick={() => setSelectedRepo()}>Back to Overview</button>
                         </Buttons>
-                    </> : 
+                    </> :
                     repos ?
                     <Wrapper>
                         <h1>Repository Overview</h1>
@@ -133,10 +130,10 @@ const Overview = () => {
                                     <RepoPreview onClick={() => setSelectedRepo(repo.url)}>
                                 <h3>{repo.name}</h3>
                                     </RepoPreview>
-                                
+
                             )
-                        }) 
-                        } 
+                        })
+                        }
                         </RepoList>
                     </Wrapper>
                          : null

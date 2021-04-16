@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import LandingVideo from '../video/Charts.webm';
 import TypeWriter from '../components/TypeWriter/TypeWriter'
 import { SocialGithubCircular } from '@styled-icons/typicons/SocialGithubCircular'
-import { Github } from "@styled-icons/bootstrap";
 
 const GithubIcon = styled(SocialGithubCircular)`
 width: 3rem;

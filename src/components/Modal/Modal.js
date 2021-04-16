@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef} from 'react'
 import styled from 'styled-components'
 import { Close } from '@styled-icons/ionicons-outline/Close'
 
@@ -86,21 +86,21 @@ const Modal = ({ showModal, setShowModal }) => {
             }
         };
 
-    return ( 
+    return (
         <>
                 <ModalBg ref={modalRef} onClick={closeModal}>
                         <ModalWrapper>
-                        
-                            <ModalContent>  
-                                <CloseModalBtn aria-label='Close Modal' onClick={() => setShowModal (prev => !prev)} />                          
+
+                            <ModalContent>
+                                <CloseModalBtn aria-label='Close Modal' onClick={() => setShowModal (prev => !prev)} />
                                     <h3>Dont know why i put this in, but now we have it if we want to use it</h3>
                                     <h5>LOOOOOL</h5>
                                 </ModalContent>
-                                
+
                         </ModalWrapper>
                 </ModalBg>
         </>
      );
 }
- 
+
 export default Modal;

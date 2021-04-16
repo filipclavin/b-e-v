@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Doughnut } from "react-chartjs-2"
 import { getLanguageData } from "../../utils/github"
 import randomcolor from "randomcolor"
-import { ArrowAltCircleLeft } from "@styled-icons/fa-regular"
 
 
 const Languages = ({ repo }) => {

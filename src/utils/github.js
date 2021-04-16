@@ -1,5 +1,4 @@
 import { GITHUB_ACCESS_TOKEN } from "../constants"
-import { getCurrentUser } from "./firebase"
 
 
 export const getUser = async (username) => {

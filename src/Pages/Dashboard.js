@@ -1,10 +1,8 @@
 import InfoBox from "../components/InfoBox.js";
 import Header from "../components/Header.js";
 import Activity from "../components/graphs/Activity"
-import { useEffect, useState } from 'react';
-import { getUsers, createUser, removeUser, githubLogOut } from "../utils/firebase.js"
 import Languages from "../components/graphs/Languages"
-import { getTrelloBoard, postNewCard, getBoardLists } from "../utils/trello.js";
+import { getBoardLists } from "../utils/trello.js";
 
 
 

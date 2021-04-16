@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-/* import { ThemeProvider } from 'styled-components'
-import { lightTheme, darkTheme } from '../components/themes/themes'
-import  {useDarkTheme} from '../components/themes//toggle/UseDarkTheme'
-import { GlobalStyle } from '../components/themes/GlobalStyle'
-import ThemeToggle from "../components/themes/toggle/toggleTheme" */
 import Modal from './Modal/Modal'
 
 import { getCurrentUser } from "./../utils/firebase"
@@ -103,23 +98,23 @@ const loadData = async (username) => {
     return (
 
         <HeaderBar gridArea={props.gridArea}>
-            {showModal && <Modal className="modal" showModal={showModal} setShowModal={setShowModal}/>}  
-                <Users>                       
+            {showModal && <Modal className="modal" showModal={showModal} setShowModal={setShowModal}/>}
+                <Users>
                     {
                         props.members ?
                             props.members.map(member => {
                                 return (
-                                
+
                                     <User>
                                         <UserCircle src={data.avatar_url}/>
                                         <ProfileName>{data.name}</ProfileName>
                                     </User>
-                                
+
                                 )
                             }) : null
                     }
                 </Users>
-                
+
             <StyledDiv>
                 <Button onClick={openModal} >MODAL</Button>
             </StyledDiv>

@@ -1,8 +1,6 @@
-import { ArrowAutofitHeight } from "@styled-icons/fluentui-system-filled";
 import firebase from "firebase";
 import "firebase/firestore";
 import { FIREBASE_KEY } from "../constants"
-import randomcolor from 'randomcolor'
 
 const users = new Map();
 const provider = new firebase.auth.GithubAuthProvider();

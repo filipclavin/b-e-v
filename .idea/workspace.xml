@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aaea9d1-3d14-4a8b-9d6c-ed54f102b114" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/trellostyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Landing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Landing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Overview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Overview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InfoBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InfoBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TrelloTaskList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TrelloTaskList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TypeWriter/TypeWriter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TypeWriter/TypeWriter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +67,7 @@
       <workItem from="1616668248592" duration="28198000" />
       <workItem from="1617621322771" duration="18856000" />
       <workItem from="1618217254807" duration="33725000" />
-      <workItem from="1618397900355" duration="20173000" />
+      <workItem from="1618397900355" duration="20925000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import QuotaBar from "./QuotaBar.js";
 
 const Box = styled.div`
     display: flex;
