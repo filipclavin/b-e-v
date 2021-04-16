@@ -17,12 +17,11 @@ const Languages = ({ repo }) => {
     }, [])
 
     useEffect(() => {
-        if(languageData) {
-            console.log(languageData)
+        if (languageData) {
 
             const labels = []
             const datas = []
-            for(let label in languageData) {
+            for (let label in languageData) {
                 labels.push(label)
                 datas.push(languageData[label])
             }

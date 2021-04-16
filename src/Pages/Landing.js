@@ -1,6 +1,6 @@
 import { githubLogIn } from "../utils/firebase.js";
 import styled from 'styled-components'
-import LandingVideo from '../video/bev.mp4';
+import LandingVideo from '../video/bev.webm';
 import TypeWriter from '../components/TypeWriter/TypeWriter'
 import { SocialGithubCircular } from '@styled-icons/typicons/SocialGithubCircular'
 
@@ -49,7 +49,7 @@ const LandingHeader = styled.div`
     
     `;
 
-    const Button = styled.button`
+const Button = styled.button`
         margin-right: 4rem;
         padding: 0.4rem 0.8rem;
         border: none;
@@ -120,9 +120,9 @@ const Landing = () => {
                     <Logo>
                         B-E-V
                 </Logo>
-                <Login>
-                    <Button onClick={githubLogIn}>Log in with <GithubIcon/></Button>
-                </Login>
+                    <Login>
+                        <Button onClick={githubLogIn}>Log in with <GithubIcon /></Button>
+                    </Login>
                 </LandingHeader>
 
                 <video autoPlay loop muted
