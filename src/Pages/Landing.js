@@ -1,6 +1,6 @@
 import { githubLogIn } from "../utils/firebase.js";
 import styled from 'styled-components'
-import LandingVideo from '../video/Charts.webm';
+import LandingVideo from '../video/bev.mp4';
 import TypeWriter from '../components/TypeWriter/TypeWriter'
 import { SocialGithubCircular } from '@styled-icons/typicons/SocialGithubCircular'
 
@@ -53,7 +53,6 @@ const LandingHeader = styled.div`
         margin-right: 4rem;
         padding: 0.4rem 0.8rem;
         border: none;
-        ouline: none;
         position: relative;
         padding: 15px;
         margin-right: 2rem;
