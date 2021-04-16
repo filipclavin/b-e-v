@@ -95,38 +95,13 @@ export const getMemberFromId = async (memberId) => {
 }
 //https://api.trello.com/1/members/5fb28148005793058ac2ba8d?key=6d3cbfc77587e09c39ce716ffc8d43f2&token=0dcb80152cd2afa6dcdb96e1d333d613cfb37f22b68cb780199513488a6781f5
 
-const thisIsTheOneFunctionToConnectThemAllForABigTrelloActivityBoard = () => {
-    const memberMap = new Map();
-    getBoardLists("P6EjDUbm").then(results => {
-        JSON.parse(results).forEach(res => {
-            if (res.name.charAt(0) === '✏') {
-                getSelectedList(res.id).then(results => {
-                    JSON.parse(results).forEach(res => {
-                        res.idMembers.forEach(async id => {
-                            const username = await getMemberFromId(id)
-
-                            if (memberMap.has(username)) {
-                                memberMap.set(username, memberMap.get(username) + 1)
-                            } else {
-                                memberMap.set(username, 1);
-                            }
-                        })
-                    })
-                })
-            }
-        })
-    })
-
-    return memberMap
-}
-
 
 export const getTrelloCards = async (emojiToken) => {
     const data = await getBoardLists("P6EjDUbm").then((res) => {
         const lists = [];
         JSON.parse(res).forEach(list => {
 
-            if (list.name.charAt(0) === emojiToken) {
+            if (list.name.charAt(0) == emojiToken) {
                 lists.push(list.id)
             }
         })
@@ -136,7 +111,7 @@ export const getTrelloCards = async (emojiToken) => {
     const cards = []
     for(const item of data) {
         await getSelectedList(item).then((res) => {
-            cards.push(JSON.parse(res))
+            cards.push(JSON.parse(res));
         })
     }
 
@@ -144,10 +119,46 @@ export const getTrelloCards = async (emojiToken) => {
 
     const trelloCards = []
     merged.forEach(card => {
-        trelloCards.push(card.name)
+        trelloCards.push(card.name);
     })
 
     return trelloCards
 }
 
+export const letsDoTheProgressbarWoo = async (remainingSymbol, completedSymbol) => {
+    const data = await getBoardLists("P6EjDUbm").then((res) => {
 
+        const lists = []
+        const remaining = [];
+        const completed = [];
+        JSON.parse(res).forEach(list => {
+            if (list.name.split(" ")[0] == remainingSymbol) {
+                remaining.push(list.id)
+            }
+            if(list.name.split(" ")[0] == completedSymbol) {
+                completed.push((list.id))
+            }
+        })
+        lists.push(remaining);
+        lists.push(completed)
+        return lists
+    })
+
+
+    const cards = new Map();
+    cards.set('remainingCards', 0)
+    cards.set('completedCards', 0)
+
+    for(const item of data[0]) {
+        await getSelectedList(item).then((res) => {
+            cards.set('remainingCards', cards.get('remainingCards') + JSON.parse(res).length)
+        })
+    }
+    for(const item of data[1]) {
+        await getSelectedList(item).then((res) => {
+            cards.set('completedCards', cards.get('completedCards') + JSON.parse(res).length)
+        })
+    }
+
+    return cards
+}

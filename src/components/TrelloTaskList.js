@@ -7,7 +7,7 @@ const Box = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-
+  
   width: available;
   height: available;
 
@@ -22,7 +22,6 @@ const TaskBox = styled.div`
   flex-direction: column;
 `
 
-
 const TrelloTaskList = () => {
     const [trelloCards, setTrelloCards] = useState([])
 
@@ -31,13 +30,6 @@ const TrelloTaskList = () => {
             setTrelloCards(res)
         })
     }, [])
-
-    useEffect(() => {
-        console.log(trelloCards)
-    }, [trelloCards])
-
-
-
     return (
         <Box>
                 {trelloCards.map(card => {
