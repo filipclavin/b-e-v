@@ -17,35 +17,33 @@ const Languages = ({ repo }) => {
     }, [])
 
     useEffect(() => {
+        if(languageData) {
+            console.log(languageData)
 
-        if (languageData) {
+            const labels = []
+            const datas = []
+            for(let label in languageData) {
+                labels.push(label)
+                datas.push(languageData[label])
+            }
 
-            const datasets = []
-
-            let counter = 0
-
-            Object.keys(languageData).forEach(item => {
-
-                datasets.push(
+            const data = {
+                labels: labels,
+                datasets: [
                     {
-                        label: item,
-                        data: Object.values(languageData)[counter],
-                        backgroundColor: randomcolor
+                        data: datas,
+                        backgroundColor: [
+                            '#F85F73',
+                            '#F85FAA',
+                            '#ffff73'
+                        ]
                     }
-                )
+                ]
+            }
 
-                counter++
-            })
-
-            setChartData({
-                labels: Object.keys(languageData),
-                datasets: datasets
-            })
+            setChartData(data)
         }
-
     }, [languageData])
-
-    console.log(chartData);
 
     return (
         chartData

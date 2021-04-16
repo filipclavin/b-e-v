@@ -11,7 +11,6 @@ export const githubLogIn = () => {
     .signInWithPopup(provider)
 
     .then(function (res) {
-      console.log(res);
       createUser(res.additionalUserInfo.username, res.user.uid)
     })
     .catch(function (error) {
