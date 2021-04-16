@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {getTrelloCards} from "../utils/trello.js";
 
 const Box = styled.div`
+
     display: inline-block;
     height: 50%;
 
@@ -43,7 +44,6 @@ const TaskBox = styled.div`
         transform: scale(0.99);
 `
 
-
 const TrelloTaskList = () => {
     const [trelloCards, setTrelloCards] = useState([])
 
@@ -52,13 +52,6 @@ const TrelloTaskList = () => {
             setTrelloCards(res)
         })
     }, [])
-
-    useEffect(() => {
-        console.log(trelloCards)
-    }, [trelloCards])
-
-
-
     return (
         <Box>
                 {trelloCards.map(card => {

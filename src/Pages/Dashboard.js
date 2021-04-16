@@ -16,6 +16,7 @@ import { useDarkTheme } from '../components/themes//toggle/UseDarkTheme'
 import { GlobalStyle } from '../components/themes/GlobalStyle'
 import ThemeToggle from "../components/themes/toggle/toggleTheme"
 import TrelloTaskList from "../components/TrelloTaskList.js";
+import ProgressBar from "../components/ProgressBar.js";
 
 
 const Grid = styled.div`
@@ -130,6 +131,7 @@ const Dashboard = ({ repo }) => {
           />
         </InfoBox>
         <TrelloTaskList />
+        <ProgressBar />
       </Grid>
     </ThemeProvider>
 
