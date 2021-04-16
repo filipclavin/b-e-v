@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 import randomcolor from 'randomcolor'
 import styled from 'styled-components'
-import { getRepoCommits, getRepoCollaborators } from "../utils/github.js";
-import { last7Days, last4Weeks, last6Months } from "../utils/dateUtils.js";
-import InfoBox from "./InfoBox.js";
+import { getRepoCommits, getRepoCollaborators } from "../../utils/github.js";
+import { last7Days, last4Weeks, last6Months } from "../../utils/dateUtils.js";
 
 const Buttons = styled.div`
 display: flex;
@@ -98,7 +97,7 @@ const Activity = ({ repo }) => {
     }
 
     return (
-        <InfoBox>
+        <>
             <Buttons>
                 <Button onClick={() => {
                     setTimes(last7Days())
@@ -123,7 +122,7 @@ const Activity = ({ repo }) => {
                     datasets: datasets
                 }}
             />
-        </InfoBox>
+        </>
     )
 }
 

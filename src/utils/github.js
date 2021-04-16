@@ -14,8 +14,8 @@ export const getUser = async (username) => {
         .then(response => {
             return response.json()
         })
-        .then(data=> {
-                userData.push(data)
+        .then(data => {
+            userData.push(data)
         })
 
     return userData;
@@ -42,42 +42,15 @@ export const getRepos = async (username) => {
     return repos;
 }
 
-export const getLanguageData = async (username, repo) => {
-    return await fetch(`https://api.github.com/repos/${username}/${repo}/languages`, {
+export const getLanguageData = async (repo) => {
+    return await fetch(`${repo}/languages`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${GITHUB_ACCESS_TOKEN}`
         }
     })
-        .then(res => {
+        .then(async res => {
             return res.json()
-        })
-        .then(json => {
-            const data = {
-                labels: Object.keys(json),
-                datasets: [{
-                    label: '# of Votes',
-                    data: Object.values(json),
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            }
-            return data
         })
 }
 

@@ -1,9 +1,9 @@
 import InfoBox from "../components/InfoBox.js";
 import Header from "../components/Header.js";
-import Activity from "../components/Activity.js"
+import Activity from "../components/graphs/Activity"
 import { useEffect, useState } from 'react';
 import { getUsers, createUser, removeUser, githubLogOut } from "../utils/firebase.js"
-import { getLanguageData } from "../utils/github.js"
+import Languages from "../components/graphs/Languages"
 import { getTrelloBoard, postNewCard, getBoardLists } from "../utils/trello.js";
 
 
@@ -92,10 +92,13 @@ const Dashboard = ({ repo }) => {
         </Header>
         <ThemeToggle theme={theme} toggleTheme={themeToggler} />
 
-        <Activity repo={repo} />
+        <InfoBox>
+          <Activity repo={repo} />
+        </InfoBox>
+
 
         <InfoBox gridArea="languages">
-          <Pie data={getLanguageData()} />
+          <Languages repo={repo} />
         </InfoBox>
 
 
@@ -126,7 +129,7 @@ const Dashboard = ({ repo }) => {
             }}
           />
         </InfoBox>
-        <TrelloTaskList/>
+        <TrelloTaskList />
       </Grid>
     </ThemeProvider>
 
