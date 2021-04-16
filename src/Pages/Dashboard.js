@@ -126,7 +126,6 @@ const Dashboard = ({ repo }) => {
             }}
           />
         </InfoBox>
-
         <TrelloTaskList/>
       </Grid>
     </ThemeProvider>
