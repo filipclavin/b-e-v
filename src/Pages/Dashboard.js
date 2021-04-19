@@ -1,18 +1,11 @@
 /* import ChartBox from "../components/ChartBox.js"; */
-import Header from "../components/Header.js";
+
 import Activity from "../components/graphs/Activity"
 import Languages from "../components/graphs/Languages"
 import { getBoardLists } from "../utils/trello.js";
 
-
-
-
 import styled from 'styled-components'
-import { ThemeProvider } from 'styled-components'
-import { lightTheme, darkTheme } from '../components/themes/themes'
-import { useDarkTheme } from '../components/themes//toggle/UseDarkTheme'
 import { GlobalStyle } from '../components/themes/GlobalStyle'
-import ThemeToggle from "../components/themes/toggle/toggleTheme"
 import TrelloTaskList from "../components/TrelloTaskList.js";
 import ProgressBar from "../components/ProgressBar.js";
 import ChartBox from '../components/ChartBox'
@@ -38,27 +31,19 @@ const MainDashboard = styled.div`
       } */
 `;
 
-
 const Dashboard = ({ repo }) => {
 
-  const [theme, themeToggler] = useDarkTheme();
 
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   return (
 
-    <ThemeProvider theme={themeMode}>
+    <>
       <GlobalStyle />
       <MainDashboard className="App">
-        <Header gridArea="header" members={[""]}>
-        <ThemeToggle theme={theme} toggleTheme={themeToggler} />
-        </Header>
-        
-        
 
-         <ChartBox> 
+        <ChartBox>
           <Activity repo={repo} />
-         </ChartBox> 
+        </ChartBox>
 
 
         <ChartBox gridArea="languages">
@@ -66,15 +51,15 @@ const Dashboard = ({ repo }) => {
         </ChartBox>
 
         <ChartBox>
-        <TrelloTaskList />
+          <TrelloTaskList />
         </ChartBox>
 
         <ChartBox>
           <h1>Sprint progress</h1>
-        <ProgressBar />
+          <ProgressBar />
         </ChartBox>
       </MainDashboard>
-    </ThemeProvider>
+    </>
 
   );
 };

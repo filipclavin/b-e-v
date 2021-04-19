@@ -2,7 +2,12 @@ import { useEffect, useState } from "react"
 import { getRepos } from "../utils/github"
 import Dashboard from "./Dashboard"
 import { githubLogOut, getCurrentUser } from "../utils/firebase"
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import Header from "../components/Header.js";
+
+import { lightTheme, darkTheme } from '../components/themes/themes'
+import { useDarkTheme } from '../components/themes//toggle/UseDarkTheme'
+import ThemeToggle from "../components/themes/toggle/toggleTheme"
 
 const Wrapper = styled.div`
 margin: 0;
@@ -27,10 +32,7 @@ color: #e1e2e3;
 `;
 
 const Buttons = styled.div`
-    position: absolute;
     width: fit-content;
-    top: 3vh;
-    right: 10%;
     z-index: 10;
 
 &>button {
@@ -60,7 +62,7 @@ justify-content: center;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .25), inset 0 0 2px 0px white;
     background: rgba(0, 0, 0, .0125);
-    overflow: hidden;
+    overflow-y: scroll;
     backdrop-filter: blur(13px);
     -webkit-backdrop-filter: blur(3px);
 
@@ -96,6 +98,7 @@ const RepoPreview = styled.div`
 
 &:hover {
     box-shadow: 2px 3px 6px rgba(223, 217, 217, 0.603);
+}
 `;
 
 const Overview = () => {
@@ -112,24 +115,25 @@ const Overview = () => {
 
     if (repos) console.log(repos);
 
+    const [theme, themeToggler] = useDarkTheme();
+
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
     return (
-        <>
+        <ThemeProvider theme={themeMode}>
+            <Header gridArea="header" members={[""]}>
+                <Buttons>
+                    <button onClick={githubLogOut}>Log out</button>
+                    {selectedRepo ? <button onClick={() => setSelectedRepo()}>Back to Overview</button> : null}
+                </Buttons>
+                <ThemeToggle theme={theme} toggleTheme={themeToggler} />
+            </Header>
             {
-                selectedRepo ?
-                    <>
-                        <Dashboard repo={selectedRepo}></Dashboard>
-                        <Buttons>
-                            <button onClick={githubLogOut}>Log out</button>
-                            <button onClick={() => setSelectedRepo()}>Back to Overview</button>
-                        </Buttons>
-                    </> :
-                    repos ?
+                selectedRepo ? <Dashboard repo={selectedRepo}></Dashboard>
+                    : repos ?
                         <Wrapper>
                             <h1>Repository Overview</h1>
                             <h3>Select a repository {`&`} continue to dashboard or log out</h3>
-                            <Buttons>
-                                <button onClick={githubLogOut}>Log out</button>
-                            </Buttons>
                             <RepoList >
                                 {
                                     repos.map(repo => {
@@ -145,7 +149,7 @@ const Overview = () => {
                         </Wrapper>
                         : null
             }
-        </>
+        </ThemeProvider>
     )
 
 
