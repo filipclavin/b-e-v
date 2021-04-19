@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import LandingVideo from '../video/bev.webm';
 import TypeWriter from '../components/TypeWriter/TypeWriter'
 import { SocialGithubCircular } from '@styled-icons/typicons/SocialGithubCircular'
-
 const GithubIcon = styled(SocialGithubCircular)`
 width: 3rem;
 height: 3rem;
@@ -37,10 +36,8 @@ const LandingHeader = styled.div`
 
     // glass effect
     box-sizing: border-box;
-    // width: 250px;
-    // height: 250px;
     border: 2px solid rgba(0, 0, 0, .15);
-    // border-radius: 25px 25px 25px 25px;
+    
     box-shadow: 0 0 10px rgba(0, 0, 0, .25), inset 0 0 2px 0px white;
     background: rgba(0, 0, 0, .0125);
     overflow: hidden;
@@ -74,11 +71,16 @@ const Button = styled.button`
 `
 
 const Logo = styled.h1`
-padding: 1rem 4rem;
+padding-left: 3rem;
 font-size: 3rem;
 color: white;
 letter-spacing: 0.2rem;
 filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
+
+@media (max-width: 2400px) {
+    font-size: 2rem;
+    padding-left: 1rem;
+  }
 `
 const Login = styled.div`
 display: inline-block;
@@ -89,7 +91,8 @@ const Par = styled.p`
 color: #fafafa;
 text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
 font-size: 2rem;
-padding: 10rem 20rem;
+text-align: center;
+
 `
 
 const Container = styled.div`
@@ -97,17 +100,10 @@ const Container = styled.div`
     top: 0;
     left: 0;    
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     background: rgb(5, 5, 20, 0.4);
     color: #fafafa;
     z-index: 5;
-    overflow: hidden;
-
-    @media (max-width: 768px) {
-        
-        max-width: 100%; 
-        display: flex;
-        align-items: center;
 
       }
     `

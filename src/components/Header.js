@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Modal from './Modal/Modal'
-
+/* import Modal from './Modal/Modal' */
+import CompanyLogo from './logo'
 import { getCurrentUser } from "./../utils/firebase"
 
 const HeaderBar = styled.div`
-    position: relative;
-    width: 100vw;
-    height: 8vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid black;
-    grid-area: ${props => props.gridArea};
-    z-index: 10;
-    `
+position: absolute;
+top: 0;
+left: 0;
+width: 100vw;
+height: 8vh;
+z-index: 1;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+
+// glass effect
+box-sizing: border-box;
+box-shadow: 0 0 10px rgba(0, 0, 0, .25), inset 0 0 1px 0px white;
+background: rgba(0, 0, 0, .0125);
+backdrop-filter: blur(13px);
+-webkit-backdrop-filter: blur(3px);
+`;
+
+
 
 const Users = styled.div`
     position: relative;
@@ -22,32 +32,32 @@ const Users = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    
       `
 
 const User = styled.div`
 position: relative;
 display: flex;
 align-items: center;
-margin-right: 1rem;
+
 `
 
 const ProfileName = styled.h3`
       display: flex;
       font-size: 0.6rem;
-      padding-left: 0.3rem;
+     
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
       text-transform: uppercase;
       `
 
 const UserCircle = styled.img`
       border: 1px solid #1e2e3e;
-      margin-left: 0.2rem;
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
       border-radius: 50%;
       width: 32px;
       height: 32px;`
 
-      const Button = styled.button`
+      /* const Button = styled.button`
       position: relative;
   padding: 8px 16px;
   border-radius: 3px;
@@ -64,19 +74,20 @@ const UserCircle = styled.img`
         transform: scale(0.98);
         box-shadow: 0px 2px 3px rgba(0,0,0,0.4)         
       }
-  `
+  ` */
   const StyledDiv = styled.div`
-    position: relative;
+    position: absolute;
+    right: 5%;
     display: flex;
     align-items: center;
-    margin-right: 1rem;
+    
 `
 
 
 const Header = (props) => {
 
     const [data, setData ] = useState({});
-    const [showModal, setShowModal ] = useState(false);
+    /* const [showModal, setShowModal ] = useState(false); */
 
 
     useEffect(async () => {
@@ -91,14 +102,15 @@ const loadData = async (username) => {
     .then(data => setData(data));
 }
 
-    const openModal = () => {
+   /*  const openModal = () => {
         setShowModal(prev => !prev)
-    }
+    } */
 
     return (
 
         <HeaderBar gridArea={props.gridArea}>
-            {showModal && <Modal className="modal" showModal={showModal} setShowModal={setShowModal}/>}
+            <CompanyLogo />
+            {/* {showModal && <Modal className="modal" showModal={showModal} setShowModal={setShowModal}/>} */}
                 <Users>
                     {
                         props.members ?
@@ -116,7 +128,8 @@ const loadData = async (username) => {
                 </Users>
 
             <StyledDiv>
-                <Button onClick={openModal} >MODAL</Button>
+                {props.children}
+               {/*  <Button onClick={openModal} >MODAL</Button> */}
             </StyledDiv>
         </HeaderBar>
     )

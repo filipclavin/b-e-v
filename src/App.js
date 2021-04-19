@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import firebase from "firebase";
 import { useState, useEffect } from "react";
-
-
 import Landing from "./Pages/Landing.js"
 import Overview from "./Pages/Overview.js"
 import Dashboard from "./Pages/Dashboard.js"

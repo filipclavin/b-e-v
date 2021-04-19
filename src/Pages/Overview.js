@@ -9,7 +9,7 @@ margin: 0;
 display: flex;
 flex-direction: column;
 width: 100vw;
-min-height: 100vh;
+height: 100vh;
 background: radial-gradient(ellipse at bottom, rgb(31, 31, 48), #343E59);
 color: #e1e2e3;
 
@@ -23,14 +23,14 @@ color: #e1e2e3;
     text-align: center;
     font-size: 1.6rem;
 }
+
 `;
 
 const Buttons = styled.div`
     position: absolute;
     width: fit-content;
-    top: 2%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 3vh;
+    right: 10%;
     z-index: 10;
 
 &>button {
@@ -85,6 +85,13 @@ const RepoPreview = styled.div`
 
     &>h3 {
         text-align: center;
+    }
+    @media (max-width:1200px) {
+        &>h3 {
+            font-size: 1rem;
+            word-break: break-all;
+            
+        }
     }
 
 &:hover {

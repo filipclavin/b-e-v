@@ -3,46 +3,61 @@ import styled from 'styled-components'
 import {getTrelloCards} from "../utils/trello.js";
 
 const Box = styled.div`
-
-    display: inline-block;
-    height: 50%;
-
     box-sizing: border-box;
-    vertical-align: top;
-    white-space: nowrap;
+    position: relative;
+    width: 40vw;
+    height: 35vh;
+    background: ${({ theme }) => theme.primaryCards};
+    
     overflow-x: hidden;
     overflow-y: scroll;
-    
-    width: 80%;
 
     border-radius: 25px;
     background-color: ${({theme}) => theme.primaryCards};
     padding: 30px;
 
-    grid-area: ${props => props.gridArea};
-    
+    @media (max-width: 1280px) {
+        margin: 0;
+        margin-bottom: 2rem;
+        width: 100%;
+        height: 40vh;
+        display: block;
+        z-index: 1;
+      }
+
+
     `;
 
 const TaskBox = styled.div`
-  display: flex;
-  background: #e76eb1c5;
+    display: flex;
     border-radius: 2rem;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
     font-size: 1.6rem;
     height: 8vh;
-    position: relative;
     white-space: normal;
     list-style: none;
     padding: 1rem 1rem;
-    margin: 1rem 10rem;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    margin: 1rem 4rem;
 
-    &:hover {
-        box-shadow: 4px 4px 6px rgba(223, 217, 217, 0.5);
-        transform: scale(0.99);
-`
+    // glass effect
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25), inset 0 0 1px 0px white;
+    background: rgba(191, 124, 185, 0.79);
+    overflow: hidden;
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(3px);
+
+    @media (max-width: 1280px) {
+        margin: 0;
+        margin-bottom: 2rem;
+        width: 80%;
+        display: block;
+        z-index: 1;
+      }
+
+`;
 
 const TrelloTaskList = () => {
     const [trelloCards, setTrelloCards] = useState([])

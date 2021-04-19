@@ -7,5 +7,6 @@ body {
     color: ${({ theme }) => theme.fontColor};
     font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
     transition: all 100 linear;
+    
 }
 `;

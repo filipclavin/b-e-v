@@ -8,14 +8,13 @@ outline: none;
 `
 
 const Button = styled.button`
+  position: relative;
   background: transparent;
   border-radius: 50%;
   border:none;
   cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 8rem;
-  z-index: 50;
+  position: relative;
+  z-index: 30;
   outline: none;
 `;
 

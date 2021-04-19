@@ -5,22 +5,35 @@ import styled from 'styled-components'
 import { getRepoCommits, getRepoCollaborators } from "../../utils/github.js";
 import { last7Days, last4Weeks, last6Months } from "../../utils/dateUtils.js";
 
+
+ const Chart = styled.div`
+position: relative;
+display: block;
+/* flex-direction: row;
+align-items: center; */
+width: 100%;
+height: 100%;
+`
+
 const Buttons = styled.div`
+position: absolute;
+height: 100%;
 display: flex;
 flex-direction: column;
+justify-content: center;
+z-index: 20;
 `
 
 
 const Button = styled.button`
 color: #fafafa;
-width: 5rem;
+width: 4.5rem;
 height: 2rem;
-margin-bottom: 0.5rem;
-padding: 0.5rem;
+margin-bottom: 1rem;
 outline: none;
 border: none;
 border-radius: 0.3rem;
-background: rgba(75, 192, 192, 0.7);
+background: ${({theme}) => theme.bgBtn};
 &:hover {
     background: rgba(75, 192, 192, 0.2);
 }
@@ -87,7 +100,7 @@ const Activity = ({ repo }) => {
                 label: coll,
                 data: d,
                 fill: false,
-                borderColor: randomcolor
+                borderColor: randomcolor()
             })
 
         })
@@ -98,6 +111,7 @@ const Activity = ({ repo }) => {
 
     return (
         <>
+        <Chart>
             <Buttons>
                 <Button onClick={() => {
                     setTimes(last7Days())
@@ -115,13 +129,55 @@ const Activity = ({ repo }) => {
                 }
                 }>6 Months</Button>
             </Buttons>
-            <Line
-                options={{ maintainAspectRatio: true }}
+           
+           
+            <Line className="charts"
+                options={{
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    title: {text: 'Commits / week', fontSize: 20, display: true},
+                    legend: {
+                        labels: {
+                            fontSize: 20,
+                        } 
+                    },
+                    layout: {
+                        padding: {
+                            left: 120,
+                            right: 10,
+                            top: 20,
+                            bottom: 20
+                        }
+                    },
+                    scales: {
+                        yAxes: [
+                            {
+                            ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 20,
+                        beginAtZero: true,
+
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                    }],
+                    xAxes: [
+                        {
+                        gridLines: {
+                            display: true
+                        }
+                        }
+                    ]
+                    }
+                }}
                 data={{
                     labels: times,
                     datasets: datasets
                 }}
             />
+            
+            </Chart>
         </>
     )
 }

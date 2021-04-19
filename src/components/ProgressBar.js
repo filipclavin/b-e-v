@@ -3,18 +3,18 @@ import styled from 'styled-components'
 import {letsDoTheProgressbarWoo} from "../utils/trello.js";
 
 const OuterBar = styled.div`
-      height: 20px;
-      width: 300px;
+      height: 2rem;
+      width: 30vw;
       background-color: #E8CFCF;
 
-      margin: 0 10px;
+      margin: 2rem;
 
       display: flex;
       flex-direction: column-reverse;
       border-radius: 25px;`
 
 const InnerBar = styled.div`
-      height: 20px;
+      height: 2rem;
       width: ${props => props.percent}%;
       background-color: royalblue;
       border-radius: 25px;`
