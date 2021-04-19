@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
-import randomcolor from 'randomcolor'
 import styled from 'styled-components'
 import { getRepoCommits, getRepoCollaborators } from "../../utils/github.js";
 import { last7Days, last4Weeks, last6Months } from "../../utils/dateUtils.js";
@@ -78,16 +77,14 @@ const Activity = ({ repo }) => {
 
                 if (diffDays <= 6 && selectedSpan === 1) {
 
-                    if (commit.name === coll || commit.login === coll) {
-                        week[diffDays]++
-                    }
+                    if (commit.name === coll || commit.login === coll) week[diffDays]++
                 }
 
-                if (diffDays <= 28 && selectedSpan === 2) {
+                if (diffWeeks <= 3 && selectedSpan === 2) {
                     if (commit.name === coll || commit.login === coll) weeks[diffWeeks]++
                 }
 
-                if (diffDays <= 182 && selectedSpan === 3) {
+                if (diffMonths <= 5 && selectedSpan === 3) {
                     if (commit.name === coll || commit.login === coll) months[diffMonths]++
                 }
             })
@@ -138,10 +135,10 @@ const Activity = ({ repo }) => {
                     options={{
                         maintainAspectRatio: false,
                         responsive: true,
-                        title: { text: 'Commits / week', fontSize: 20, display: true },
+                        title: { text: 'Commits', fontSize: 20, display: true },
                         legend: {
                             labels: {
-                                fontSize: 20,
+                                fontSize: 15,
                             }
                         },
                         layout: {
