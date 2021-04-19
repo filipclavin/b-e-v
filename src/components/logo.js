@@ -9,8 +9,10 @@ const CompanyLogo = styled.div`
     width: 20rem;
     height: 80%;
     background: pink;
-    
     text-transform: uppercase;
+    @media (max-width: 900px) {
+        width: 8rem;
+    }
     `
 
 const Logo = () => {

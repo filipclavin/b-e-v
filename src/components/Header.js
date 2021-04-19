@@ -44,11 +44,16 @@ align-items: center;
 
 const ProfileName = styled.h3`
       display: flex;
-      font-size: 0.6rem;
+      font-size: 1rem;
      margin-left: 1rem;
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
       text-transform: uppercase;
       color: ${({theme}) => theme.text};
+
+      @media (max-width: 768px) {
+          margin-left: 0.2rem;
+          font-size: 0.6rem;
+      }
       `
 
 const UserCircle = styled.img`
@@ -58,6 +63,12 @@ const UserCircle = styled.img`
       width: 32px;
       height: 32px;
       margin-left: 1rem;
+
+      @media (max-width: 768px) {
+        width: 24px;
+        height: 24px;
+        margin-left: 0.2rem;
+    }
       `
 
 /* const Button = styled.button`

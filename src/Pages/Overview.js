@@ -43,6 +43,11 @@ const Buttons = styled.div`
     width: fit-content;
     z-index: 10;
     margin-left: 1rem;
+
+    @media (max-width: 768px) {
+       padding: 2px 4px;
+       font-size: 0.6rem;
+    }
 }
 `;
 
