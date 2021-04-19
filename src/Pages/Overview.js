@@ -119,31 +119,31 @@ const Overview = () => {
                     <>
                         <Dashboard repo={selectedRepo}></Dashboard>
                         <Buttons>
-                        <button onClick={githubLogOut}>Log out</button>
-                        <button onClick={() => setSelectedRepo()}>Back to Overview</button>
+                            <button onClick={githubLogOut}>Log out</button>
+                            <button onClick={() => setSelectedRepo()}>Back to Overview</button>
                         </Buttons>
                     </> :
                     repos ?
-                    <Wrapper>
-                        <h1>Repository Overview</h1>
-                        <h3>Select a repository {`&`} continue to dashboard or log out</h3>
-                        <Buttons>
-                        <button onClick={githubLogOut}>Log out</button>
-                        </Buttons>
-                        <RepoList >
-                        {
-                        repos.map(repo => {
-                            return (
-                                    <RepoPreview onClick={() => setSelectedRepo(repo.url)}>
-                                <h3>{repo.name}</h3>
-                                    </RepoPreview>
+                        <Wrapper>
+                            <h1>Repository Overview</h1>
+                            <h3>Select a repository {`&`} continue to dashboard or log out</h3>
+                            <Buttons>
+                                <button onClick={githubLogOut}>Log out</button>
+                            </Buttons>
+                            <RepoList >
+                                {
+                                    repos.map(repo => {
+                                        return (
+                                            <RepoPreview onClick={() => setSelectedRepo(repo.url)}>
+                                                <h3>{repo.name}</h3>
+                                            </RepoPreview>
 
-                            )
-                        })
-                        }
-                        </RepoList>
-                    </Wrapper>
-                         : null
+                                        )
+                                    })
+                                }
+                            </RepoList>
+                        </Wrapper>
+                        : null
             }
         </>
     )

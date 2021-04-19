@@ -64,24 +64,12 @@ const Languages = ({ repo }) => {
                         padding: 10
                     },
                     scales: {
-                        yAxes: [
-                            {
-                                ticks: {
-                                    autoSkip: true,
-                                    maxTicksLimit: 10,
-                                    beginAtZero: true,
-                                },
-                                gridLines: {
-                                    display: false
-                                },
-                            }],
-                        xAxes: [
-                            {
-                                gridLines: {
-                                    display: false
-                                }
-                            }
-                        ]
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
                     }
                 }}
             />
