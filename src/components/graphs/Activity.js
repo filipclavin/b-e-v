@@ -4,9 +4,10 @@ import randomcolor from 'randomcolor'
 import styled from 'styled-components'
 import { getRepoCommits, getRepoCollaborators } from "../../utils/github.js";
 import { last7Days, last4Weeks, last6Months } from "../../utils/dateUtils.js";
+import ColorHash from "color-hash"
 
 
- const Chart = styled.div`
+const Chart = styled.div`
 position: relative;
 display: block;
 /* flex-direction: row;
@@ -33,7 +34,7 @@ margin-bottom: 1rem;
 outline: none;
 border: none;
 border-radius: 0.3rem;
-background: ${({theme}) => theme.bgBtn};
+background: ${({ theme }) => theme.bgBtn};
 &:hover {
     background: rgba(75, 192, 192, 0.2);
 }
@@ -43,6 +44,8 @@ const Activity = ({ repo }) => {
     const [datasets, setDatasets] = useState()
     const [times, setTimes] = useState(last7Days())
     const [selectedSpan, setSelectedSpan] = useState(1)
+
+    const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.5 })
 
     useEffect(async () => {
         setData()
@@ -100,7 +103,7 @@ const Activity = ({ repo }) => {
                 label: coll,
                 data: d,
                 fill: false,
-                borderColor: randomcolor()
+                borderColor: colorHash.hex(coll)
             })
 
         })
@@ -111,72 +114,72 @@ const Activity = ({ repo }) => {
 
     return (
         <>
-        <Chart>
-            <Buttons>
-                <Button onClick={() => {
-                    setTimes(last7Days())
-                    setSelectedSpan(1)
-                }
-                }>7 Days</Button>
-                <Button onClick={() => {
-                    setTimes(last4Weeks())
-                    setSelectedSpan(2)
-                }
-                }>4 Weeks</Button>
-                <Button onClick={() => {
-                    setTimes(last6Months())
-                    setSelectedSpan(3)
-                }
-                }>6 Months</Button>
-            </Buttons>
-           
-           
-            <Line className="charts"
-                options={{
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    title: {text: 'Commits / week', fontSize: 20, display: true},
-                    legend: {
-                        labels: {
-                            fontSize: 20,
-                        } 
-                    },
-                    layout: {
-                        padding: {
-                            left: 120,
-                            right: 10,
-                            top: 20,
-                            bottom: 20
-                        }
-                    },
-                    scales: {
-                        yAxes: [
-                            {
-                            ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 20,
-                        beginAtZero: true,
+            <Chart>
+                <Buttons>
+                    <Button onClick={() => {
+                        setTimes(last7Days())
+                        setSelectedSpan(1)
+                    }
+                    }>7 Days</Button>
+                    <Button onClick={() => {
+                        setTimes(last4Weeks())
+                        setSelectedSpan(2)
+                    }
+                    }>4 Weeks</Button>
+                    <Button onClick={() => {
+                        setTimes(last6Months())
+                        setSelectedSpan(3)
+                    }
+                    }>6 Months</Button>
+                </Buttons>
 
-                    },
-                    gridLines: {
-                        display: true
-                    }
-                    }],
-                    xAxes: [
-                        {
-                        gridLines: {
-                            display: true
+
+                <Line className="charts"
+                    options={{
+                        maintainAspectRatio: false,
+                        responsive: true,
+                        title: { text: 'Commits / week', fontSize: 20, display: true },
+                        legend: {
+                            labels: {
+                                fontSize: 20,
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                left: 120,
+                                right: 10,
+                                top: 20,
+                                bottom: 20
+                            }
+                        },
+                        scales: {
+                            yAxes: [
+                                {
+                                    ticks: {
+                                        autoSkip: true,
+                                        maxTicksLimit: 20,
+                                        beginAtZero: true,
+
+                                    },
+                                    gridLines: {
+                                        display: true
+                                    }
+                                }],
+                            xAxes: [
+                                {
+                                    gridLines: {
+                                        display: true
+                                    }
+                                }
+                            ]
                         }
-                        }
-                    ]
-                    }
-                }}
-                data={{
-                    labels: times,
-                    datasets: datasets
-                }}
-            />
-            
+                    }}
+                    data={{
+                        labels: times,
+                        datasets: datasets
+                    }}
+                />
+
             </Chart>
         </>
     )

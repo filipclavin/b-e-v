@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.0",
     "@typescript-eslint/visitor-keys": "^4.21.0",
     "chart.js": "^2.9.4",
+    "color-hash": "^1.1.1",
     "firebase": "^8.3.0",
     "moment": "^2.29.1",
     "randomcolor": "^0.6.2",

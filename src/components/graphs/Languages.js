@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Doughnut } from "react-chartjs-2"
 import { getLanguageData } from "../../utils/github"
-import randomcolor from "randomcolor"
+import ColorHash from "color-hash"
 import styled from 'styled-components'
 
 
@@ -9,6 +9,8 @@ const Languages = ({ repo }) => {
 
     const [languageData, setLanguageData] = useState()
     const [chartData, setChartData] = useState()
+
+    const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.5 })
 
     useEffect(() => {
         getLanguageData(repo)
@@ -22,9 +24,11 @@ const Languages = ({ repo }) => {
 
             const labels = []
             const datas = []
+            const bgColors = []
             for (let label in languageData) {
                 labels.push(label)
                 datas.push(languageData[label])
+                bgColors.push(colorHash.hex(label))
             }
 
             const data = {
@@ -32,11 +36,7 @@ const Languages = ({ repo }) => {
                 datasets: [
                     {
                         data: datas,
-                        backgroundColor: [
-                            '#F85F73',
-                            '#F85FAA',
-                            '#ffff73'
-                        ]
+                        backgroundColor: bgColors
                     }
                 ]
             }
@@ -47,16 +47,16 @@ const Languages = ({ repo }) => {
 
     return (
         chartData
-            ? 
+            ?
             <Doughnut className="charts"
                 data={chartData}
                 options={{
                     maintainAspectRatio: false,
                     responsive: true,
-                    title: {text: 'Languages', fontSize: 40, display: true},
+                    title: { text: 'Languages', fontSize: 40, display: true },
                     legend: {
                         labels: {
-                            
+
                             fontSize: 20,
                         }
                     },
@@ -66,22 +66,22 @@ const Languages = ({ repo }) => {
                     scales: {
                         yAxes: [
                             {
-                            ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 10,
-                        beginAtZero: true,
-                    },
-                    gridLines: {
-                        display: false
-                    },
-                    }],
-                    xAxes: [
-                        {
-                        gridLines: {
-                            display: false
-                        }
-                        }
-                    ]
+                                ticks: {
+                                    autoSkip: true,
+                                    maxTicksLimit: 10,
+                                    beginAtZero: true,
+                                },
+                                gridLines: {
+                                    display: false
+                                },
+                            }],
+                        xAxes: [
+                            {
+                                gridLines: {
+                                    display: false
+                                }
+                            }
+                        ]
                     }
                 }}
             />
