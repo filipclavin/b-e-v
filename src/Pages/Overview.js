@@ -22,6 +22,7 @@ color: #e1e2e3;
     text-align: center;
     font-size: 4rem;
     margin-bottom: 0;
+    margin-top: 100px;
 }
 &>h3 {
     margin-top: 0;
@@ -49,7 +50,7 @@ const RepoList = styled.div`
 margin: 0 auto;
 padding: 1rem;
 width: 90%;
-height: 100%;
+max-height: 600px;
 display: flex;
 flex-flow: row wrap;
 justify-content: center;
@@ -62,7 +63,7 @@ justify-content: center;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .25), inset 0 0 2px 0px white;
     background: rgba(0, 0, 0, .0125);
-    overflow-y: scroll;
+    overflow-y: auto;
     backdrop-filter: blur(13px);
     -webkit-backdrop-filter: blur(3px);
 

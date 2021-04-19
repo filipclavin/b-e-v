@@ -80,6 +80,7 @@ const StyledDiv = styled.div`
     right: 1%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     width: 40%;
     z-index: 1;
 `
