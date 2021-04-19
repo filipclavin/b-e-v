@@ -45,7 +45,7 @@ align-items: center;
 const ProfileName = styled.h3`
       display: flex;
       font-size: 0.6rem;
-     
+     margin-left: 1rem;
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
       text-transform: uppercase;
       `
@@ -55,7 +55,9 @@ const UserCircle = styled.img`
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
       border-radius: 50%;
       width: 32px;
-      height: 32px;`
+      height: 32px;
+      margin-left: 1rem;
+      `
 
 /* const Button = styled.button`
 position: relative;
@@ -77,7 +79,7 @@ cursor: pointer;
 ` */
 const StyledDiv = styled.div`
     position: absolute;
-    right: 1%;
+    right: 3%;
     display: flex;
     align-items: center;
     justify-content: flex-end;

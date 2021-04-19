@@ -51,8 +51,11 @@ const TaskBox = styled.div`
 
     @media (max-width: 1280px) {
         margin: 0;
-        margin-bottom: 2rem;
-        width: 80%;
+        margin-bottom: 1.5rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        font-size: 1.2rem;
+        width: 90%;
         display: block;
         z-index: 1;
       }
