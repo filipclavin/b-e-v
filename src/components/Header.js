@@ -77,7 +77,7 @@ const UserCircle = styled.img`
   ` */
   const StyledDiv = styled.div`
     position: absolute;
-    right: 5%;
+    right: 1%;
     display: flex;
     align-items: center;
     
