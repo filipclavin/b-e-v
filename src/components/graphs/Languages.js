@@ -53,7 +53,7 @@ const Languages = ({ repo }) => {
                 options={{
                     maintainAspectRatio: false,
                     responsive: true,
-                    title: { text: 'Languages', fontSize: 40, display: true },
+                    title: { text: 'Languages', fontSize: 20, display: true },
                     legend: {
                         labels: {
 

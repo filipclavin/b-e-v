@@ -32,14 +32,14 @@ const TaskBox = styled.div`
     display: flex;
     border-radius: 2rem;
     box-sizing: border-box;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-size: 1.6rem;
     height: 8vh;
     white-space: normal;
     list-style: none;
-    padding: 1rem 1rem;
-    margin: 1rem 4rem;
+    padding: 2rem 3rem;
+    margin: 1rem 3rem;
 
     // glass effect
     box-sizing: border-box;
@@ -55,7 +55,7 @@ const TaskBox = styled.div`
         padding-left: 3rem;
         padding-right: 3rem;
         font-size: 1.2rem;
-        width: 90%;
+        width: 95%;
         display: block;
         z-index: 1;
       }

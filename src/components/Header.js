@@ -48,6 +48,7 @@ const ProfileName = styled.h3`
      margin-left: 1rem;
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
       text-transform: uppercase;
+      color: ${({theme}) => theme.text};
       `
 
 const UserCircle = styled.img`

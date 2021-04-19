@@ -17,9 +17,10 @@ height: 100%;
 
 const Buttons = styled.div`
 position: absolute;
-height: 100%;
+top: 0;
+width: 100%;
 display: flex;
-flex-direction: column;
+flex-direction: row;
 justify-content: center;
 z-index: 20;
 `
@@ -29,7 +30,7 @@ const Button = styled.button`
 color: #fafafa;
 width: 4.5rem;
 height: 2rem;
-margin-bottom: 1rem;
+margin-right: 1rem;
 outline: none;
 border: none;
 border-radius: 0.3rem;
@@ -143,10 +144,10 @@ const Activity = ({ repo }) => {
                         },
                         layout: {
                             padding: {
-                                left: 120,
-                                right: 10,
-                                top: 20,
-                                bottom: 20
+                                left: 5,
+                                right: 5,
+                                top: 40,
+                                bottom: 5
                             }
                         },
                         scales: {
