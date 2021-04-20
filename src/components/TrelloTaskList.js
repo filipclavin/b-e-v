@@ -30,15 +30,15 @@ const Box = styled.div`
 
 const TaskBox = styled.div`
     display: flex;
-    border-radius: 2rem;
+    border-radius: 0.5rem;
     box-sizing: border-box;
     justify-content: flex-start;
     align-items: center;
     font-size: 1.6rem;
-    height: 8vh;
+    height: 6rem;
     white-space: normal;
     list-style: none;
-    padding: 2rem 3rem;
+    padding: 1rem 2rem;
     margin: 1rem 3rem;
     color: ${({theme}) => theme.fontColor};
 
@@ -53,9 +53,9 @@ const TaskBox = styled.div`
     @media (max-width: 1280px) {
         margin: 0;
         margin-bottom: 1.5rem;
-        padding-left: 3rem;
-        padding-right: 3rem;
-        font-size: 1.2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        font-size: 1rem;
         width: 95%;
         display: block;
         z-index: 1;
