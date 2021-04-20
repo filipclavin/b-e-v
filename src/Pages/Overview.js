@@ -14,9 +14,11 @@ margin: 0;
 display: flex;
 flex-direction: column;
 width: 100vw;
-height: 100vh;
+min-height: 100vh;
+max-height: 100%;
 background: ${({theme}) => theme.body};
 color: ${({theme}) => theme.fontColor};
+
 
 &>h1 {
     text-align: center;
@@ -28,6 +30,19 @@ color: ${({theme}) => theme.fontColor};
     margin-top: 0;
     text-align: center;
     font-size: 1.6rem;
+}
+
+@media (max-width:1200px) {
+
+    
+    &>h1 {
+        font-size: 2rem;
+    }
+    &>h3 {
+        font-size: 1rem;
+        
+        
+    }
 }
 
 `;
@@ -53,6 +68,22 @@ const Buttons = styled.div`
 
 const RepoList = styled.div`
 margin: 0 auto;
+width: 90%;
+height: 100%;
+display: flex;
+flex-flow: row wrap;
+justify-content: center;
+
+
+
+@media (max-width:900px) {
+    
+    width: 90%;
+    }
+`;
+
+/* const RepoList = styled.div`
+margin: 0 auto;
 padding: 1rem;
 width: 90%;
 height: 80vh;
@@ -72,9 +103,101 @@ overflow-y: auto;
     backdrop-filter: blur(13px);
     -webkit-backdrop-filter: blur(3px);
 
+`; */
+
+const Card = styled.div`
+display: flex;
+  height: 280px;
+  width: 200px;
+  background-color: ${({theme}) => theme.primaryCards};
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+/*   margin-left: -50px; */
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+
+  &:hover {
+    transform: translateY(-20px);
+  transition: 0.4s ease-out;
+  
+  }
+
+ /* &:not(:first-child) {
+    margin-left: -50px;
+  } */
+
+  &:hover ~ & {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+  }
+
+  @media (max-width:900px) {
+    height: 160px;
+    width: 100px;
+        
+    }
+}
+  `;
+
+  
+const Title = styled.div`
+color: ${({theme}) => theme.fontColor};
+font-weight: 600;
+position: absolute;
+left: 20px;
+top: 15px;
+
+@media (max-width:1200px) {
+    left: 10px;
+    font-size: 0.8rem;
+    word-break: break-all;
+    }
+
 `;
 
-const RepoPreview = styled.div`
+const Bar = styled.div`
+position: absolute;
+  top: 100px;
+  left: 20px;
+  height: 5px;
+  width: 150px;
+
+  @media (max-width:1200px) {
+    left: 10px;
+    width: 90px;
+        
+    }
+
+  `;
+
+  const EmptyBar = styled.div`
+  background-color: #2e3033;
+  width: 90%;
+  height: 100%;
+
+  `;
+
+  const FilledBar = styled.div`
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 3px;
+  height: 100%;
+  background: rgb(0,154,217);
+  background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+  transition: 0.6s ease-out;
+
+  ${Card}:hover & {
+    width: 120px;
+    transition: 0.4s ease-out;
+  }
+ 
+  `;
+
+
+/* const RepoPreview = styled.div`
     width: 20%;
     padding: 0.5rem 1rem;
     margin: 1rem 1rem;
@@ -106,7 +229,7 @@ const RepoPreview = styled.div`
 &:hover {
     box-shadow: 2px 3px 6px rgba(223, 217, 217, 0.603);
 }
-`;
+`; */
 
 const Overview = () => {
 
@@ -145,11 +268,12 @@ const Overview = () => {
                                 {
                                     repos.map(repo => {
                                         return (
-                                            <RepoPreview onClick={() => setSelectedRepo(repo.url)}>
-                                                <h3>{repo.name}</h3>
-                                            </RepoPreview>
+                                            <Card onClick={() => setSelectedRepo(repo.url)}>
+                                                <Title>{repo.name}</Title><Bar><EmptyBar></EmptyBar><FilledBar></FilledBar></Bar>
+                                            </Card>
 
                                         )
+                                            
                                     })
                                 }
                             </RepoList>
