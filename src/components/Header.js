@@ -48,7 +48,7 @@ const ProfileName = styled.h3`
      margin-left: 1rem;
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
       text-transform: uppercase;
-      color: ${({theme}) => theme.fontColor};
+      color: ${({ theme }) => theme.fontColor};
 
       @media (max-width: 768px) {
           margin-left: 0.2rem;
@@ -90,12 +90,14 @@ const Header = (props) => {
 
 
     useEffect(async () => {
-        loadData(await getCurrentUser());
+        await getCurrentUser()
+            .then(res => {
+                loadData(res.username);
+            })
         // getData();
     }, [])
 
     const loadData = async (username) => {
-        getCurrentUser(username)
         await fetch(`https://api.github.com/users/${username}`)
             .then(res => res.json())
             .then(data => setData(data));

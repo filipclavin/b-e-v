@@ -236,10 +236,14 @@ const Overview = () => {
     const [repos, setRepos] = useState()
 
     useEffect(async () => {
-        getRepos(await getCurrentUser())
+        await getCurrentUser()
             .then(res => {
-                setRepos(res)
+                getRepos(res.username)
+                    .then(res => {
+                        setRepos(res)
+                    })
             })
+        /*  */
     }, [])
 
     if (repos) console.log(repos);

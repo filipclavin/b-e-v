@@ -86,21 +86,21 @@ export const removeUser = (username) => {
 
 export const getCurrentUser = async () => {
   const uid = firebase.auth().currentUser.uid
-  let username
+  let user
 
   do {
     await db.collection("users").doc(uid).get()
       .then((doc) => {
-        if (doc.data()) return doc.data().username
+        if (doc.data()) return {
+          username: doc.data().username,
+          company: doc.data().company
+        }
       })
-      .then(usernamePromise => {
-        username = usernamePromise
+      .then(userPromise => {
+        user = userPromise
       })
 
-    console.log(username);
+  } while (!user)
 
-  } while (!username)
-
-
-  return username
+  return user
 }
