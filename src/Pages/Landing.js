@@ -4,6 +4,9 @@ import LandingVideo from '../video/bev.webm';
 import TypeWriter from '../components/TypeWriter/TypeWriter'
 import { SocialGithubCircular } from '@styled-icons/typicons/SocialGithubCircular'
 import { useState } from "react";
+
+
+
 const GithubIcon = styled(SocialGithubCircular)`
 width: 3rem;
 height: 3rem;
@@ -87,6 +90,16 @@ const Login = styled.div`
     display: flex;
     align-items: center;
     text-align: center;
+
+    &>form>label {
+        color: white;
+        font-size: 1.5rem;
+        margin-right: 2rem;
+
+        &>form>label>input {
+            font-size: 2rem;
+        }
+    }
 `
 
 const Par = styled.p`
