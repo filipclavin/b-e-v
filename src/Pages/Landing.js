@@ -131,7 +131,6 @@ const Landing = () => {
                             } else {
                                 alert("Please select a company")
                             }
-
                         }}>Log in with <GithubIcon /></Button>
                     </Login>
                 </LandingHeader>

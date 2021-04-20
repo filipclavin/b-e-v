@@ -104,3 +104,21 @@ export const getCurrentUser = async () => {
 
   return user
 }
+
+export const getCompanyLogo = async (company) => {
+
+  let logo;
+
+  do {
+    await db.collection("companies").doc(company).get()
+      .then((doc) => {
+        if (doc.data()) return doc.data().logo
+      })
+      .then(logoPromise => {
+        logo = logoPromise
+      })
+
+  } while (!logo)
+
+  return logo
+}
