@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import { getCurrentUser, getCompanyLogo } from '../utils/firebase'
 
 const CompanyLogo = styled.div`
-    margin-left: 0.2%;
+    margin-left: 0.5%;
     min-width: 10rem;
-    height: 90%;
+    height: 8vh;
     background: ${props => props.logoURL ? `url(${props.logoURL})` : 'pink'};
     background-size: contain;
     background-repeat: no-repeat;
     text-transform: uppercase;
+    background-position: center center;
     `
 
 const Logo = () => {
