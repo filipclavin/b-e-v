@@ -5,13 +5,13 @@ import { FIREBASE_KEY } from "../constants"
 const users = new Map();
 const provider = new firebase.auth.GithubAuthProvider();
 
-export const githubLogIn = (company) => {
+export const githubLogIn = (company, admin) => {
   firebase
     .auth()
     .signInWithPopup(provider)
 
     .then(function (res) {
-      createUser(res.additionalUserInfo.username, res.user.uid, company)
+      createUser(res.additionalUserInfo.username, res.user.uid, company, admin)
     })
     .catch(function (error) {
       const errorCode = error.code;
@@ -59,10 +59,12 @@ export const getUsers = () => {
     });
 };
 
-export const createUser = (username, uid, company) => {
+export const createUser = (username, uid, company, admin) => {
+
   db.collection("users").doc(uid).set({
     username: username,
-    company: company
+    company: company,
+    admin: admin
   })
     .then(() => {
       console.log("Document successfully written!");
@@ -93,7 +95,8 @@ export const getCurrentUser = async () => {
       .then((doc) => {
         if (doc.data()) return {
           username: doc.data().username,
-          company: doc.data().company
+          company: doc.data().company,
+          admin: doc.data().admin
         }
       })
       .then(userPromise => {

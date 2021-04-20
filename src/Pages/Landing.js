@@ -84,7 +84,8 @@ filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
   }
 `
 const Login = styled.div`
-display: inline-block;
+    display: flex;
+    align-items: center;
     text-align: center;
 `
 
@@ -110,6 +111,7 @@ const Container = styled.div`
 const Landing = () => {
 
     const [company, setCompany] = useState()
+    const [admin, setAdmin] = useState(false)
 
     return (
         <>
@@ -119,15 +121,20 @@ const Landing = () => {
                         B-E-V
                 </Logo>
                     <Login>
-                        <label htmlFor="company1"> Xbox
-                            <input type="radio" name="Xbox" id="Xbox" onClick={() => setCompany("Xbox")} />
-                        </label>
-                        <label htmlFor="company2"> Playstation
-                            <input type="radio" name="Playstation" id="Playstation" onClick={() => setCompany("Playstation")} />
-                        </label>
+                        <form>
+                            <label htmlFor="company1"> Xbox
+                                <input type="radio" name="company" id="Xbox" onClick={() => setCompany("Xbox")} />
+                            </label>
+                            <label htmlFor="company2"> Playstation
+                                <input type="radio" name="company" id="Playstation" onClick={() => setCompany("Playstation")} />
+                            </label>
+                            <label htmlFor="admin"> Admin?
+                                <input type="checkbox" name="admin" id="admin" onClick={e => setAdmin(e.target.checked)} />
+                            </label>
+                        </form>
                         <Button onClick={() => {
                             if (company) {
-                                githubLogIn(company)
+                                githubLogIn(company, admin)
                             } else {
                                 alert("Please select a company")
                             }

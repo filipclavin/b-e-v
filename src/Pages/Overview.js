@@ -234,6 +234,7 @@ const Overview = () => {
 
     const [selectedRepo, setSelectedRepo] = useState()
     const [repos, setRepos] = useState()
+    const [admin, setAdmin] = useState()
 
     useEffect(async () => {
         await getCurrentUser()
@@ -242,11 +243,10 @@ const Overview = () => {
                     .then(res => {
                         setRepos(res)
                     })
+                setAdmin(res.admin)
             })
         /*  */
     }, [])
-
-    if (repos) console.log(repos);
 
     const [theme, themeToggler] = useDarkTheme();
 
@@ -256,7 +256,7 @@ const Overview = () => {
         <ThemeProvider theme={themeMode}>
             <Header gridArea="header" members={[""]}>
                 <Buttons>
-                    <button onClick={githubLogOut}>Log out</button>
+                    <button onClick={githubLogOut}>Log Out</button>
                     {selectedRepo ? <button onClick={() => setSelectedRepo()}>Back to Overview</button> : null}
                 </Buttons>
                 <ThemeToggle theme={theme} toggleTheme={themeToggler} />
