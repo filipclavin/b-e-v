@@ -11,7 +11,8 @@ import { useDarkTheme } from '../components/themes//toggle/UseDarkTheme'
 import ThemeToggle from "../components/themes/toggle/toggleTheme"
 
 
-import MobileView from "./MobileView"
+import MobileDashboard from "./MobileDashboard"
+import { MobileView, BrowserView } from "react-device-detect"
 
 
 const Wrapper = styled.div`
@@ -159,16 +160,21 @@ const Overview = () => {
                 <ThemeToggle theme={theme} toggleTheme={themeToggler} />
             </Header>
 
-                {/* selectedRepo ? <Dashboard repo={selectedRepo}></Dashboard>
+            {/* selectedRepo ? <Dashboard repo={selectedRepo}></Dashboard>
                     : repos ? */}
-                    {
+            {
                 selectedRepo ?
                     <>
-                        <MobileView repo={selectedRepo}></MobileView>
-                        <MobileButtons>
-                            <button onClick={githubLogOut}>Log out</button>
-                            <button onClick={() => setSelectedRepo()}>Back to Overview</button>
-                        </MobileButtons>
+                        <MobileView>
+                            <MobileDashboard repo={selectedRepo} />
+                            <MobileButtons>
+                                <button onClick={githubLogOut}>Log out</button>
+                                <button onClick={() => setSelectedRepo()}>Back to Overview</button>
+                            </MobileButtons>
+                        </MobileView>
+                        <BrowserView>
+                            <Dashboard repo={selectedRepo} />
+                        </BrowserView>
                     </> :
                     repos ?
 
@@ -189,8 +195,8 @@ const Overview = () => {
                             </RepoList>
                         </Wrapper>
                         : null
-                    }
-        
+            }
+
         </ThemeProvider>
     )
 
