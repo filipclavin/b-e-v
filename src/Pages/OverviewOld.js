@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { getRepos } from "../utils/github"
 import Dashboard from "./Dashboard"
 import { githubLogOut, getCurrentUser } from "../utils/firebase"
-
 import styled, { ThemeProvider } from 'styled-components'
 import Header from "../components/Header.js";
 
@@ -10,9 +9,7 @@ import { lightTheme, darkTheme } from '../components/themes/themes'
 import { useDarkTheme } from '../components/themes//toggle/UseDarkTheme'
 import ThemeToggle from "../components/themes/toggle/toggleTheme"
 
-
 import MobileView from "./MobileView"
-
 
 const Wrapper = styled.div`
 margin: 0;
@@ -20,8 +17,8 @@ display: flex;
 flex-direction: column;
 width: 100vw;
 height: 100vh;
-background: radial-gradient(ellipse at bottom, rgb(31, 31, 48), #343E59);
-color: #e1e2e3;
+background: ${({theme}) => theme.body};
+color: ${({theme}) => theme.fontColor};
 
 &>h1 {
     text-align: center;
@@ -55,7 +52,6 @@ const Buttons = styled.div`
     }
 }
 `;
-
 const MobileButtons = styled.div`
     position: absolute;
     width: fit-content;
@@ -158,10 +154,9 @@ const Overview = () => {
                 </Buttons>
                 <ThemeToggle theme={theme} toggleTheme={themeToggler} />
             </Header>
-
-                {/* selectedRepo ? <Dashboard repo={selectedRepo}></Dashboard>
-                    : repos ? */}
-                    {
+            
+                {/*selectedRepo ? <Dashboard repo={selectedRepo}></Dashboard>*/}
+        {
                 selectedRepo ?
                     <>
                         <MobileView repo={selectedRepo}></MobileView>
@@ -170,8 +165,7 @@ const Overview = () => {
                             <button onClick={() => setSelectedRepo()}>Back to Overview</button>
                         </MobileButtons>
                     </> :
-                    repos ?
-
+                    : repos ?
                         <Wrapper>
                             <h1>Repository Overview</h1>
                             <h3>Select a repository {`&`} continue to dashboard or log out</h3>
@@ -189,8 +183,7 @@ const Overview = () => {
                             </RepoList>
                         </Wrapper>
                         : null
-                    }
-        
+            }
         </ThemeProvider>
     )
 

@@ -6,7 +6,7 @@ const CompanyLogo = styled.div`
     left: 1vw;
     top: 1vh;
     display: block;
-    width: 20rem;
+    width: 7rem;
     height: 80%;
     background: pink;
     text-transform: uppercase;
