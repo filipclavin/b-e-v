@@ -9,7 +9,7 @@ justify-content: center;
 width: 40vw;
 height: 35vh;
 background: ${({ theme }) => theme.primaryCards};
-color: ${({ theme }) => theme.text};
+color: ${({ theme }) => theme.fontColor};
  margin-right: 2rem;
 padding: 1rem;
 border-radius: 0.8rem;

@@ -40,6 +40,7 @@ const TaskBox = styled.div`
     list-style: none;
     padding: 2rem 3rem;
     margin: 1rem 3rem;
+    color: ${({theme}) => theme.fontColor};
 
     // glass effect
     box-sizing: border-box;

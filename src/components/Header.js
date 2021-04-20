@@ -48,11 +48,12 @@ const ProfileName = styled.h3`
      margin-left: 1rem;
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
       text-transform: uppercase;
-      color: ${({theme}) => theme.text};
+      color: ${({theme}) => theme.fontColor};
 
       @media (max-width: 768px) {
           margin-left: 0.2rem;
           font-size: 0.6rem;
+          visibility: hidden;
       }
       `
 
@@ -71,24 +72,6 @@ const UserCircle = styled.img`
     }
       `
 
-/* const Button = styled.button`
-position: relative;
-padding: 8px 16px;
-border-radius: 3px;
-border: none;
-background: ${({ theme }) => theme.bgBtn};
-color: #fafafa;
-filter: drop-shadow(4px 4px 4px rgba(0,0,0,0.3));
-outline: none;
-cursor: pointer;
-
-&:hover,
-&:focus {
-  background: ${({ theme }) => theme.btnHover};
-  transform: scale(0.98);
-  box-shadow: 0px 2px 3px rgba(0,0,0,0.4)         
-}
-` */
 const StyledDiv = styled.div`
     position: absolute;
     right: 3%;
