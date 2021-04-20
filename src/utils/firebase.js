@@ -125,3 +125,7 @@ export const getCompanyLogo = async (company) => {
 
   return logo
 }
+
+export const changeCompanyLogo = (company, url) => {
+  db.collection("companies").doc(company).set({ logo: url })
+}
