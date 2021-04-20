@@ -15,7 +15,7 @@ display: flex;
 flex-direction: column;
 width: 100vw;
 min-height: 100vh;
-max-height: 100%;
+max-height: fit-content;
 background: ${({theme}) => theme.body};
 color: ${({theme}) => theme.fontColor};
 
@@ -69,7 +69,6 @@ const Buttons = styled.div`
 const RepoList = styled.div`
 margin: 0 auto;
 width: 90%;
-height: 100%;
 display: flex;
 flex-flow: row wrap;
 justify-content: center;
