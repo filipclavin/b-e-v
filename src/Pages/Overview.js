@@ -15,8 +15,8 @@ display: flex;
 flex-direction: column;
 width: 100vw;
 height: 100vh;
-background: radial-gradient(ellipse at bottom, rgb(31, 31, 48), #343E59);
-color: #e1e2e3;
+background: ${({theme}) => theme.body};
+color: ${({theme}) => theme.fontColor};
 
 &>h1 {
     text-align: center;
