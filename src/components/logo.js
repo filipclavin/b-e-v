@@ -10,15 +10,23 @@ const CompanyLogo = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     text-transform: uppercase;
+    & > * {
+        display: none;
+    }
+    &:hover > * {
+        display: block;
+    }
     `
 
 const Logo = () => {
 
     const [logoURL, setLogoURL] = useState()
+    const [admin, setAdmin] = useState(false)
 
     useEffect(async () => {
         await getCurrentUser()
             .then(async res => {
+                setAdmin(res.admin)
                 await getCompanyLogo(res.company)
                     .then(res => {
                         setLogoURL(res)
@@ -30,6 +38,9 @@ const Logo = () => {
 
         <>
             <CompanyLogo logoURL={logoURL}>
+                <div>
+                    <p>Change Logo</p>
+                </div>
             </CompanyLogo>
         </>
     );
