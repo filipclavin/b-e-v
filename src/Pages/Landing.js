@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import LandingVideo from '../video/bev.webm';
 import TypeWriter from '../components/TypeWriter/TypeWriter'
 import { SocialGithubCircular } from '@styled-icons/typicons/SocialGithubCircular'
+import { useState } from "react";
 const GithubIcon = styled(SocialGithubCircular)`
 width: 3rem;
 height: 3rem;
@@ -104,11 +105,12 @@ const Container = styled.div`
     background: rgb(5, 5, 20, 0.4);
     color: #fafafa;
     z-index: 5;
-
-      }
     `
 
 const Landing = () => {
+
+    const [company, setCompany] = useState()
+
     return (
         <>
             <StyledMain>
@@ -117,7 +119,20 @@ const Landing = () => {
                         B-E-V
                 </Logo>
                     <Login>
-                        <Button onClick={githubLogIn}>Log in with <GithubIcon /></Button>
+                        <label htmlFor="company1"> Xbox
+                            <input type="radio" name="Xbox" id="Xbox" onClick={() => setCompany("Xbox")} />
+                        </label>
+                        <label htmlFor="company2"> Playstation
+                            <input type="radio" name="Playstation" id="Playstation" onClick={() => setCompany("Playstation")} />
+                        </label>
+                        <Button onClick={() => {
+                            if (company) {
+                                githubLogIn(company)
+                            } else {
+                                alert("Please select a company")
+                            }
+
+                        }}>Log in with <GithubIcon /></Button>
                     </Login>
                 </LandingHeader>
 

@@ -16,8 +16,8 @@ flex-direction: column;
 width: 100vw;
 min-height: 100vh;
 max-height: fit-content;
-background: ${({theme}) => theme.body};
-color: ${({theme}) => theme.fontColor};
+background: ${({ theme }) => theme.body};
+color: ${({ theme }) => theme.fontColor};
 
 
 &>h1 {
@@ -108,7 +108,7 @@ const Card = styled.div`
 display: flex;
   height: 280px;
   width: 200px;
-  background-color: ${({theme}) => theme.primaryCards};
+  background-color: ${({ theme }) => theme.primaryCards};
   border-radius: 10px;
   box-shadow: -1rem 0 3rem #000;
 /*   margin-left: -50px; */
@@ -140,9 +140,9 @@ display: flex;
 }
   `;
 
-  
+
 const Title = styled.div`
-color: ${({theme}) => theme.fontColor};
+color: ${({ theme }) => theme.fontColor};
 font-weight: 600;
 position: absolute;
 left: 20px;
@@ -171,14 +171,14 @@ position: absolute;
 
   `;
 
-  const EmptyBar = styled.div`
+const EmptyBar = styled.div`
   background-color: #2e3033;
   width: 90%;
   height: 100%;
 
   `;
 
-  const FilledBar = styled.div`
+const FilledBar = styled.div`
   position: absolute;
   top: 0px;
   z-index: 3;
@@ -272,7 +272,7 @@ const Overview = () => {
                                             </Card>
 
                                         )
-                                            
+
                                     })
                                 }
                             </RepoList>
