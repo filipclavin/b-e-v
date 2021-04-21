@@ -8,6 +8,7 @@ import Header from "../components/Header.js";
 import { lightTheme, darkTheme } from '../components/themes/themes'
 import { useDarkTheme } from '../components/themes//toggle/UseDarkTheme'
 import ThemeToggle from "../components/themes/toggle/toggleTheme"
+import { formatISODate } from "../utils/dateUtils"
 
 const Wrapper = styled.div`
 margin: 0;
@@ -195,6 +196,49 @@ const FilledBar = styled.div`
  
   `;
 
+const Info = styled.div`
+color: ${({ theme }) => theme.fontColor};
+font-size: 13px;
+font-weight: 600;
+position: absolute;
+left: 12px;
+top: 155px;
+margin-right: 9px;
+
+@media (max-width:1200px) {
+    left: 10px;
+    font-size: 0.8rem;
+    word-break: break-all;
+    }
+
+`;
+
+const Updated = styled.div`
+color: ${({ theme }) => theme.fontColor};
+font-weight: 300;
+padding-top: 15px;
+
+@media (max-width:1200px) {
+    left: 10px;
+    font-size: 0.8rem;
+    word-break: break-all;
+    }
+
+`;
+
+const Updated2 = styled.div`
+color: ${({ theme }) => theme.fontColor};
+font-weight: 300;
+padding-top: 5px;
+
+
+@media (max-width:1200px) {
+    left: 10px;
+    font-size: 0.8rem;
+    word-break: break-all;
+    }
+
+`;
 
 /* const RepoPreview = styled.div`
     width: 20%;
@@ -234,7 +278,6 @@ const Overview = () => {
 
     const [selectedRepo, setSelectedRepo] = useState()
     const [repos, setRepos] = useState()
-    const [admin, setAdmin] = useState()
 
     useEffect(async () => {
         await getCurrentUser()
@@ -243,9 +286,7 @@ const Overview = () => {
                     .then(res => {
                         setRepos(res)
                     })
-                setAdmin(res.admin)
             })
-        /*  */
     }, [])
 
     const [theme, themeToggler] = useDarkTheme();
@@ -272,7 +313,7 @@ const Overview = () => {
                                     repos.map(repo => {
                                         return (
                                             <Card onClick={() => setSelectedRepo(repo.url)}>
-                                                <Title>{repo.name}</Title><Bar><EmptyBar></EmptyBar><FilledBar></FilledBar></Bar>
+                                                <Title>{repo.name}</Title><Bar><EmptyBar></EmptyBar><FilledBar></FilledBar></Bar><Info>{repo.description}<Updated>Last updated at: <Updated2>{formatISODate(repo.pushed_at)}</Updated2></Updated></Info>
                                             </Card>
 
                                         )

@@ -2,7 +2,6 @@
 
 import Activity from "../components/graphs/Activity"
 import Languages from "../components/graphs/Languages"
-import { getBoardLists } from "../utils/trello.js";
 
 import styled from 'styled-components'
 import { GlobalStyle } from '../components/themes/GlobalStyle'

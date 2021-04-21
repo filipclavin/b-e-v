@@ -59,3 +59,9 @@ export const last6Months = () => {
     }
     return months
 }
+
+
+export const formatISODate = date => {
+    const newString = date.replace("T", " ").replace("Z", "")
+    return newString
+}
