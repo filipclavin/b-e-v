@@ -227,7 +227,7 @@ padding-top: 15px;
 const Updated2 = styled.div`
 color: ${({ theme }) => theme.fontColor};
 font-weight: 300;
-padding-top: 5px;
+padding-top: 4px;
 
 
 @media (max-width:1200px) {
