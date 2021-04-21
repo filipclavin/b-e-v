@@ -149,13 +149,13 @@ const Landing = () => {
                     <Login>
                         <form>
                             <label htmlFor="company1"> Xbox
-                                <input type="radio" name="company" id="Xbox" onClick={() => setCompany("Xbox")} />
+                                <input type="radio" name="company" id="Xbox" onChange={() => setCompany("Xbox")} />
                             </label>
                             <label htmlFor="company2"> Playstation
-                                <input type="radio" name="company" id="Playstation" onClick={() => setCompany("Playstation")} />
+                                <input type="radio" name="company" id="Playstation" onChange={() => setCompany("Playstation")} />
                             </label>
                             <label htmlFor="admin"> Admin?
-                                <input type="checkbox" name="admin" id="admin" onClick={e => setAdmin(e.target.checked)} />
+                                <input type="checkbox" name="admin" id="admin" onChange={e => setAdmin(e.target.checked)} />
                             </label>
                         </form>
                         <Button onClick={() => {

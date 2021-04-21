@@ -48,6 +48,7 @@ const Logo = () => {
     useEffect(async () => {
         await getCurrentUser()
             .then(async res => {
+                console.log(res.company);
                 setCompany(res.company)
                 setAdmin(res.admin)
                 await getCompanyLogo(res.company)
