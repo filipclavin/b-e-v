@@ -24,6 +24,7 @@ const StyledMain = styled.div`
 width: 100vw;
 height: 100vh;
 background: radial-gradient(ellipse at bottom,  #343E59 20%, #2B2D3E);
+
 `
 const LandingHeader = styled.div`
     position: absolute;
@@ -81,7 +82,7 @@ color: white;
 letter-spacing: 0.2rem;
 filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
 
-@media (max-width: 2400px) {
+@media (max-width: 900px) {
     font-size: 2rem;
     padding-left: 1rem;
   }
@@ -91,15 +92,27 @@ const Login = styled.div`
     align-items: center;
     text-align: center;
 
+&>form {
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
     &>form>label {
         color: white;
         font-size: 1.5rem;
         margin-right: 2rem;
 
-        &>form>label>input {
-            font-size: 2rem;
+        @media (max-width: 768px) {
+            font-size: 0.6rem;
+            margin: 0;
         }
     }
+
 `
 
 const Par = styled.p`
