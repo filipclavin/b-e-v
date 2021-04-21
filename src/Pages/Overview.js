@@ -195,6 +195,48 @@ const FilledBar = styled.div`
  
   `;
 
+  const Info = styled.div`
+color: ${({ theme }) => theme.fontColor};
+font-weight: 600;
+position: absolute;
+left: 12px;
+top: 155px;
+
+@media (max-width:1200px) {
+    left: 10px;
+    font-size: 0.8rem;
+    word-break: break-all;
+    }
+
+`;
+
+const Updated = styled.div`
+color: ${({ theme }) => theme.fontColor};
+font-weight: 300;
+padding-top: 15px;
+
+
+@media (max-width:1200px) {
+    left: 10px;
+    font-size: 0.8rem;
+    word-break: break-all;
+    }
+
+`;
+
+const Updated2 = styled.div`
+color: ${({ theme }) => theme.fontColor};
+font-weight: 300;
+padding-top: 5px;
+
+
+@media (max-width:1200px) {
+    left: 10px;
+    font-size: 0.8rem;
+    word-break: break-all;
+    }
+
+`;
 
 /* const RepoPreview = styled.div`
     width: 20%;
@@ -272,7 +314,7 @@ const Overview = () => {
                                     repos.map(repo => {
                                         return (
                                             <Card onClick={() => setSelectedRepo(repo.url)}>
-                                                <Title>{repo.name}</Title><Bar><EmptyBar></EmptyBar><FilledBar></FilledBar></Bar>
+                                                <Title>{repo.name}</Title><Bar><EmptyBar></EmptyBar><FilledBar></FilledBar></Bar><Info>{repo.description}<Updated>Last updated at: <Updated2>{repo.updated_at}</Updated2></Updated></Info>
                                             </Card>
 
                                         )
