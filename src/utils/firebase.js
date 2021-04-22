@@ -106,10 +106,24 @@ export const getCurrentUser = async () => {
 
   } while (!user)
 
-  // These are not the infinite loops you're looking for
+  // 
 
   return user
 }
+
+/*
+   _________________________________________
+  /                                         \
+  |        These are not the infinite       |
+  |        loops you're looking for         |
+  \                                         /
+   -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+*/
 
 export const getCompanyLogo = async (company) => {
 
@@ -126,7 +140,20 @@ export const getCompanyLogo = async (company) => {
 
   } while (!logo)
 
-  // These are not the infinite loops you're looking for
+/*
+   _________________________________________
+  /                                         \
+  |        These are not the infinite       |
+  |        loops you're looking for         |
+  \                                         /
+   -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+*/
+   
 
   return logo
 }
