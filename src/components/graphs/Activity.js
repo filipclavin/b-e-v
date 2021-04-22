@@ -9,8 +9,6 @@ import ColorHash from "color-hash"
 const Chart = styled.div`
 position: relative;
 display: block;
-/* flex-direction: row;
-align-items: center; */
 width: 100%;
 height: 100%;
 `

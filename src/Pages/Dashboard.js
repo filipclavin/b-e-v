@@ -17,15 +17,6 @@ const MainDashboard = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-
-   /*  @media (max-width: 1200px) {
-        max-width: 100vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;        
-        align-items: center;
-        margin: 0 2rem;
-      } */
 `;
 
 const Dashboard = ({ repo }) => {
