@@ -82,29 +82,6 @@ justify-content: center;
     }
 `;
 
-/* const RepoList = styled.div`
-margin: 0 auto;
-padding: 1rem;
-width: 90%;
-height: 80vh;
-display: flex;
-flex-flow: row wrap;
-justify-content: center;
-overflow-y: auto;
-
-// glassmorph effect
-    box-sizing: border-box;
-    // width: 250px;
-    // height: 250px;
-    border: 2px solid rgba(0, 0, 0, .15);
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .25), inset 0 0 2px 0px white;
-    background: rgba(0, 0, 0, .0125);
-    backdrop-filter: blur(13px);
-    -webkit-backdrop-filter: blur(3px);
-
-`; */
-
 const Card = styled.div`
 display: flex;
   height: 280px;
@@ -122,10 +99,6 @@ display: flex;
   transition: 0.4s ease-out;
   
   }
-
- /* &:not(:first-child) {
-    margin-left: -50px;
-  } */
 
   &:hover ~ & {
     position: relative;
@@ -239,40 +212,6 @@ padding-top: 5px;
     }
 
 `;
-
-/* const RepoPreview = styled.div`
-    width: 20%;
-    padding: 0.5rem 1rem;
-    margin: 1rem 1rem;
-    border: 1px solid #e1e2e3;
-
-    // glassmorph styling for "buttons"
-    border: 2px solid rgba(0, 0, 0, .15);
-    // border-radius: 25px 25px 25px 25px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .25), inset 0 0 2px 0px white;
-    background: rgba(0, 0, 0, .0125);
-    backdrop-filter: blur(13px);
-    -webkit-backdrop-filter: blur(3px);
-    
-    text-transform: uppercase;
-
-    &>h3 {
-        text-align: center;
-    }
-    @media (max-width:1200px) {
-
-        width: 80%;
-        &>h3 {
-            font-size: 1rem;
-            word-break: break-all;
-            
-        }
-    }
-
-&:hover {
-    box-shadow: 2px 3px 6px rgba(223, 217, 217, 0.603);
-}
-`; */
 
 const Overview = () => {
 

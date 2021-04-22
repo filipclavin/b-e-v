@@ -13,7 +13,6 @@ function App() {
             } else {
                 setLoggedIn(false);
             }
-            /* console.log(loggedIn) */
         })
     }, [])
 
