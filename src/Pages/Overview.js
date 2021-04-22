@@ -138,6 +138,7 @@ position: absolute;
   width: 150px;
 
   @media (max-width:1200px) {
+    top: 70px;
     left: 10px;
     width: 90px;
         
@@ -178,11 +179,15 @@ left: 12px;
 top: 155px;
 margin-right: 9px;
 
-@media (max-width:1200px) {
+@media (max-width:900px) {
     left: 10px;
-    font-size: 0.8rem;
+    font-size: 0.4rem;
+    left: 1rem;
+    top: 5rem;
     word-break: break-all;
+    
     }
+
 
 `;
 
@@ -191,11 +196,6 @@ color: ${({ theme }) => theme.fontColor};
 font-weight: 300;
 padding-top: 15px;
 
-@media (max-width:1200px) {
-    left: 10px;
-    font-size: 0.8rem;
-    word-break: break-all;
-    }
 
 `;
 
@@ -204,12 +204,6 @@ color: ${({ theme }) => theme.fontColor};
 font-weight: 300;
 padding-top: 5px;
 
-
-@media (max-width:1200px) {
-    left: 10px;
-    font-size: 0.8rem;
-    word-break: break-all;
-    }
 
 `;
 
