@@ -1,5 +1,3 @@
-/* import ChartBox from "../components/ChartBox.js"; */
-
 import Activity from "../components/graphs/Activity"
 import Languages from "../components/graphs/Languages"
 

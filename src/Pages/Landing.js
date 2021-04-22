@@ -185,8 +185,7 @@ const Landing = () => {
                     <section>
                         <Par>
                             <TypeWriter />
-                            {/*
-                Full digital overview is the best means to combat these modern issues and optimize your company for the future. */}
+                            
                         </Par>
                     </section>
                 </Container>
