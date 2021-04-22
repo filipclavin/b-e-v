@@ -87,15 +87,12 @@ const StyledDiv = styled.div`
 const Header = (props) => {
 
     const [data, setData] = useState({});
-    /* const [showModal, setShowModal ] = useState(false); */
-
 
     useEffect(async () => {
         await getCurrentUser()
             .then(res => {
                 loadData(res.username);
             })
-        // getData();
     }, [])
 
     const loadData = async (username) => {
@@ -103,10 +100,6 @@ const Header = (props) => {
             .then(res => res.json())
             .then(data => setData(data));
     }
-
-    /*  const openModal = () => {
-         setShowModal(prev => !prev)
-     } */
 
     return (
 
@@ -130,7 +123,6 @@ const Header = (props) => {
 
             <StyledDiv>
                 {props.children}
-                {/*  <Button onClick={openModal} >MODAL</Button> */}
             </StyledDiv>
         </HeaderBar>
     )
