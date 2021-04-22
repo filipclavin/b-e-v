@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5aaea9d1-3d14-4a8b-9d6c-ed54f102b114" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/graphs/Languages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/graphs/Languages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProgressBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProgressBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/trello.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/trello.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +53,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.trello.js" />
         <item itemvalue="npm.start" />
+        <item itemvalue="Node.js.trello.js" />
       </list>
     </recent_temporary>
   </component>

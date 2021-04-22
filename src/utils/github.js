@@ -94,5 +94,4 @@ export const getRepoCollaborators = async (repoURL) => {
         })
 
     return simpleCollaborators
-
 }

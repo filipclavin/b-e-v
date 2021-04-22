@@ -90,28 +90,8 @@ export const getCurrentUser = async () => {
   const uid = firebase.auth().currentUser.uid
   let user
 
-  do {
-    await db.collection("users").doc(uid).get()
-      .then((doc) => {
-        if (doc.data()) return {
-          username: doc.data().username,
-          company: doc.data().company,
-          admin: doc.data().admin
-        }
-      })
-      .then(userPromise => {
-        user = userPromise
-      })
 
-
-  } while (!user)
-
-  // 
-
-  return user
-}
-
-/*
+  /*
    _________________________________________
   /                                         \
   |        These are not the infinite       |
@@ -124,6 +104,23 @@ export const getCurrentUser = async () => {
                 ||----w |
                 ||     ||
 */
+
+  do {
+    await db.collection("users").doc(uid).get()
+      .then((doc) => {
+        if (doc.data()) return {
+          username: doc.data().username,
+          company: doc.data().company,
+          admin: doc.data().admin
+        }
+      })
+      .then(userPromise => {
+        user = userPromise
+      })
+  } while (!user)
+
+  return user
+}
 
 export const getCompanyLogo = async (company) => {
 
@@ -153,7 +150,7 @@ export const getCompanyLogo = async (company) => {
                 ||----w |
                 ||     ||
 */
-   
+
 
   return logo
 }

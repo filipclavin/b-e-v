@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import styled from 'styled-components'
-import {letsDoTheProgressbarWoo} from "../utils/trello.js";
+import {sprintProgress} from "../utils/trello.js";
 
 const OuterBar = styled.div`
       height: 2rem;
@@ -24,7 +24,7 @@ const ProgressBar = () => {
     const [completed, setCompleted] = useState(0)
 
     useEffect(() => {
-        letsDoTheProgressbarWoo('✏️', '😇').then(res => {
+        sprintProgress('✏️', '😇').then(res => {
             setRemaining(res.get('remainingCards'))
             setCompleted(res.get('completedCards'))
         })

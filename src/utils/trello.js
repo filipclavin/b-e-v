@@ -4,7 +4,6 @@ const key = TRELLO_KEY;
 const token = TRELLO_TOKEN;
 
 export const getTrelloBoard = (boardId) => {
-
     fetch(`https://api.trello.com/1/boards/${boardId}/memberships?key=${key}&token=${token}`, {
         method: 'GET',
         headers: {
@@ -73,7 +72,6 @@ export const getSelectedList = async (listId) => {
     }
 }
 
-
 export const getMemberFromId = async (memberId) => {
     let data = null;
     await fetch(`https://api.trello.com/1/members/${memberId}?key=${key}&token=${token}`, {
@@ -97,7 +95,6 @@ export const getTrelloCards = async (emojiToken) => {
     const data = await getBoardLists("P6EjDUbm").then((res) => {
         const lists = [];
         JSON.parse(res).forEach(list => {
-
             if (list.name.charAt(0) == emojiToken) {
                 lists.push(list.id)
             }
@@ -122,7 +119,7 @@ export const getTrelloCards = async (emojiToken) => {
     return trelloCards
 }
 
-export const letsDoTheProgressbarWoo = async (remainingSymbol, completedSymbol) => {
+export const sprintProgress = async (remainingSymbol, completedSymbol) => {
     const data = await getBoardLists("P6EjDUbm").then((res) => {
 
         const lists = []
@@ -140,7 +137,6 @@ export const letsDoTheProgressbarWoo = async (remainingSymbol, completedSymbol) 
         lists.push(completed)
         return lists
     })
-
 
     const cards = new Map();
     cards.set('remainingCards', 0)
