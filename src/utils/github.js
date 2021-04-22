@@ -33,7 +33,7 @@ export const getRepos = async (username) => {
             return response.json()
         })
         .then(json => {
-            json.map(repo => {
+            json.forEach(repo => {
                 repos.push(repo)
             })
         })
@@ -66,7 +66,7 @@ export const getRepoCommits = async (repoURL) => {
         .then(res => {
             return res.json()
         }).then(json => {
-            json.map(commit => {
+            json.forEach(commit => {
                 simpleCommitData.push({ name: commit.commit.author.name, login: commit.author.login, date: commit.commit.committer.date })
             })
         })

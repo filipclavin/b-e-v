@@ -45,17 +45,22 @@ const Logo = () => {
     const [logoClicked, setLogoClicked] = useState(false)
     const [newLogoURL, setNewLogoURL] = useState()
 
-    useEffect(async () => {
-        await getCurrentUser()
-            .then(async res => {
-                console.log(res.company);
-                setCompany(res.company)
-                setAdmin(res.admin)
-                await getCompanyLogo(res.company)
-                    .then(res => {
-                        setLogoURL(res)
-                    })
-            })
+    useEffect(() => {
+        const getUser = async () => {
+            await getCurrentUser()
+                .then(async res => {
+                    console.log(res.company);
+                    setCompany(res.company)
+                    setAdmin(res.admin)
+                    await getCompanyLogo(res.company)
+                        .then(res => {
+                            setLogoURL(res)
+                        })
+                })
+        }
+
+        getUser()
+
     }, [])
 
     const onLogoSubmit = () => {

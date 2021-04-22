@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Doughnut } from "react-chartjs-2"
 import { getLanguageData } from "../../utils/github"
 import ColorHash from "color-hash"
-import styled from 'styled-components'
 
 
 const Languages = ({ repo }) => {

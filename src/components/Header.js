@@ -88,11 +88,16 @@ const Header = (props) => {
 
     const [data, setData] = useState({});
 
-    useEffect(async () => {
-        await getCurrentUser()
-            .then(res => {
-                loadData(res.username);
-            })
+    useEffect(() => {
+
+        const getUser = async () => {
+            await getCurrentUser()
+                .then(res => {
+                    loadData(res.username);
+                })
+        }
+
+        getUser()
     }, [])
 
     const loadData = async (username) => {

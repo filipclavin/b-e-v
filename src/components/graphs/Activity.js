@@ -45,7 +45,7 @@ const Activity = ({ repo }) => {
 
     const colorHash = new ColorHash({ lightness: 0.5, saturation: 0.5 })
 
-    useEffect(async () => {
+    useEffect(() => {
         setData()
     }, [times])
 

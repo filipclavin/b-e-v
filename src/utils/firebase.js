@@ -103,7 +103,10 @@ export const getCurrentUser = async () => {
         user = userPromise
       })
 
+
   } while (!user)
+
+  // These are not the infinite loops you're looking for
 
   return user
 }
@@ -122,6 +125,8 @@ export const getCompanyLogo = async (company) => {
       })
 
   } while (!logo)
+
+  // These are not the infinite loops you're looking for
 
   return logo
 }

@@ -218,14 +218,17 @@ const Overview = () => {
     const [selectedRepo, setSelectedRepo] = useState()
     const [repos, setRepos] = useState()
 
-    useEffect(async () => {
-        await getCurrentUser()
-            .then(res => {
-                getRepos(res.username)
-                    .then(res => {
-                        setRepos(res)
-                    })
-            })
+    useEffect(() => {
+        const getUser = async () => {
+            await getCurrentUser()
+                .then(res => {
+                    getRepos(res.username)
+                        .then(res => {
+                            setRepos(res)
+                        })
+                })
+        }
+        getUser()
     }, [])
 
     const [theme, themeToggler] = useDarkTheme();
