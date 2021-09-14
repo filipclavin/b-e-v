@@ -2,6 +2,8 @@
 
 By [Filip Calvin](https://github.com/filipclavin) • [Robert Wägar](https://github.com/robertwagar) • [Jesper Sjöstrom](https://github.com/SjostromJesper) • [Rebecka Åberg](https://github.com/Rottweileriana)
 
+* And [Kevin Morales](https://github.com/Kevmorales) on tiny bits of dashboard. *
+
 **With B-E-V you can track your teams or your own progress on your projects.**
 
 ## 🦅 BIRDS EYE VIEW
